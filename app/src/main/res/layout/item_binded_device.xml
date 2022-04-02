@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginBottom="@dimen/margin_size_12dp"
+    android:background="@color/white"
+    android:paddingHorizontal="@dimen/margin_size_14dp"
+    android:paddingVertical="@dimen/margin_size_18dp">
+
+    <ImageView
+        android:id="@+id/iv_device_logo"
+        android:layout_width="80dp"
+        android:layout_height="80dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/tv_device_name"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/margin_size_20dp"
+        android:text="GAT28-20220325-0001"
+        android:textColor="#2D3033"
+        android:textSize="@dimen/font_size_16sp"
+        app:layout_constraintStart_toEndOf="@+id/iv_device_logo"
+        app:layout_constraintTop_toTopOf="@+id/iv_device_logo" />
+
+    <TextView
+        android:id="@+id/tv_device_desc"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/margin_size_20dp"
+        android:layout_marginTop="@dimen/margin_size_12dp"
+        android:text="GAT28工业冷水高压清洗机"
+        android:textColor="@color/title"
+        app:layout_constraintStart_toEndOf="@+id/iv_device_logo"
+        app:layout_constraintTop_toBottomOf="@+id/tv_device_name" />
+
+    <TextView
+        android:id="@+id/tv_device_bind"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/margin_size_20dp"
+        android:layout_marginTop="@dimen/margin_size_12dp"
+        android:text="绑定时间：2021-10-08 00:0"
+        android:textColor="@color/title"
+        app:layout_constraintStart_toEndOf="@+id/iv_device_logo"
+        app:layout_constraintTop_toBottomOf="@+id/tv_device_desc" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

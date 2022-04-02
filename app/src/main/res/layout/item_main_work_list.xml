@@ -1,0 +1,158 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    app:cardCornerRadius="@dimen/margin_size_4dp"
+    app:cardElevation="@dimen/margin_size_0dp">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingBottom="@dimen/margin_size_12dp">
+
+        <RelativeLayout
+            android:id="@+id/ll_call_title"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <ImageView
+                android:id="@+id/iv_main_work"
+                android:layout_centerVertical="true"
+                android:layout_marginHorizontal="@dimen/margin_size_12dp"
+                android:layout_marginVertical="@dimen/margin_size_14dp"
+                android:layout_width="40dp"
+                android:layout_height="40dp" />
+
+            <TextView
+                android:id="@+id/tv_main_work_name"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignTop="@id/iv_main_work"
+                android:layout_toEndOf="@id/iv_main_work"
+                android:text="GT7901616"
+                android:textColor="@color/fontTitle"
+                android:textSize="@dimen/font_size_18sp" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_toEndOf="@id/iv_main_work"
+                android:layout_below="@id/tv_main_work_name"
+                android:textSize="@dimen/font_size_16sp"
+                android:text="户外超高压清洗机"
+                android:textColor="@color/font33" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentEnd="true"
+                android:layout_gravity="end"
+                android:background="@drawable/border_main_call_status"
+                android:paddingHorizontal="@dimen/margin_size_8dp"
+                android:paddingVertical="@dimen/margin_size_4dp"
+                android:text="待派工"
+                android:textColor="@color/white" />
+        </RelativeLayout>
+
+        <View
+            android:id="@+id/view_line"
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:layout_marginHorizontal="@dimen/margin_size_12dp"
+            android:background="@color/lineColor"
+            app:layout_constraintTop_toBottomOf="@+id/ll_call_title" />
+
+        <RelativeLayout
+            android:id="@+id/rl_title1"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="@dimen/margin_size_12dp"
+            android:layout_marginTop="@dimen/margin_size_12dp"
+            app:layout_constraintTop_toBottomOf="@+id/view_line">
+
+            <TextView
+                style="@style/CommonTitleLeft"
+                android:layout_alignParentStart="true"
+                android:text="工单类型：" />
+
+            <TextView
+                android:id="@+id/tv_call_device_name"
+                style="@style/CommonTitleLeft"
+                android:layout_alignParentEnd="true" />
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:id="@+id/rl_title2"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="@dimen/margin_size_12dp"
+            android:layout_marginTop="@dimen/margin_size_12dp"
+            app:layout_constraintTop_toBottomOf="@+id/rl_title1">
+
+            <TextView
+                style="@style/CommonTitleLeft"
+                android:layout_alignParentStart="true"
+                android:text="问题描述：" />
+
+            <TextView
+                style="@style/CommonTitleLeft"
+                android:layout_alignParentEnd="true" />
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:id="@+id/rl_title3"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="@dimen/margin_size_12dp"
+            android:layout_marginTop="@dimen/margin_size_12dp"
+            app:layout_constraintTop_toBottomOf="@+id/rl_title2">
+
+            <TextView
+                style="@style/CommonTitleLeft"
+                android:layout_alignParentStart="true"
+                android:text="报修人：" />
+
+            <TextView
+                style="@style/CommonTitleLeft"
+                android:layout_alignParentEnd="true" />
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:id="@+id/rl_title4"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="@dimen/margin_size_12dp"
+            android:layout_marginTop="@dimen/margin_size_12dp"
+            app:layout_constraintTop_toBottomOf="@+id/rl_title3">
+
+            <TextView
+                style="@style/CommonTitleLeft"
+                android:layout_alignParentStart="true"
+                android:text="报修时间：" />
+
+            <TextView
+                style="@style/CommonTitleLeft"
+                android:layout_alignParentEnd="true" />
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:id="@+id/rl_title5"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="@dimen/margin_size_12dp"
+            android:layout_marginTop="@dimen/margin_size_12dp"
+            app:layout_constraintTop_toBottomOf="@+id/rl_title4">
+
+            <TextView
+                style="@style/CommonTitleLeft"
+                android:layout_alignParentStart="true"
+                android:text="设备归属：" />
+
+            <TextView
+                style="@style/CommonTitleLeft"
+                android:layout_alignParentEnd="true" />
+        </RelativeLayout>
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</androidx.cardview.widget.CardView>

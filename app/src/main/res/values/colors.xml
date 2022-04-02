@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="colorPrimary">#258cf7</color>
+    <color name="colorPrimaryDark">#ef999d</color>
+    <color name="colorAccent">#026FFF</color>
+    <color name="black">#000</color>
+    <color name="white">#fff</color>
+    <color name="fontBlue">#026FFF</color>
+    <color name="fontTitle">#2D3033</color>
+    <color name="fontSubTitle">#A2A2A2</color>
+    <color name="font33">#333333</color>
+    <color name="lineColor">#ECECEC</color>
+    <color name="grey">#a2a2a2</color>
+    <color name="title">#4A4A4A</color>
+    <color name="suggestion">#B6B6B6</color>
+    <color name="background">#F7F7F7</color>
+    <color name="font_color_26">#262626</color>
+    <color name="edit_hint_bf">#BFBFBF</color>
+    <color name="person_log_out">#DB232D</color>
+    <color name="viewfinder_frame">#ff000000</color>
+    <color name="viewfinder_laser">#ffff0000</color>
+    <color name="viewfinder_mask">#60000000</color>
+    <color name="transparent">#00000000</color>
+    <color name="possible_result_points">#c0ffff00</color>
+    <color name="result_view">#b0000000</color>
+
+    <color name="common_green_bg">#34c759</color>
+    <color name="rl_main_bg">#1B1B1B</color>
+
+</resources>

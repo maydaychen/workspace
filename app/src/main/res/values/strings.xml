@@ -1,0 +1,75 @@
+<resources>
+    <string name="app_name">Printer</string>
+    <string name="login_accountId">主账号ID</string>
+    <string name="login_username">用户名</string>
+    <string name="login_password">密码</string>
+    <string name="login_account_hint">请输入主账号ID</string>
+    <string name="login_username_hint">请输入账号</string>
+    <string name="login_password_hint">请输入密码</string>
+    <string name="login_log_in">登录</string>
+
+    <string name="rationale_write_permission">此应用需要文件读写及相关权限</string>
+    <string name="loading">数据加载中...</string>
+    <string name="server_error">服务器错误，请稍后重试...</string>
+    <string name="back">返回</string>
+
+    <string name="home">首页</string>
+    <string name="me">我的</string>
+    <string name="person_info">用户中心</string>
+    <string name="person_change_pass">修改密码</string>
+    <string name="person_telephone">客服电话</string>
+    <string name="person_address">收货地址</string>
+    <string name="common_save_change">保存修改</string>
+    <string name="person_old_pass">原密码</string>
+    <string name="common_input_hint">请输入</string>
+    <string name="person_new_pass">新密码</string>
+    <string name="person_confirm_pass">确认密码</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="person_add_address">新增收货地址</string>
+    <string name="common_save">保存</string>
+    <string name="person_avatar">头像</string>
+    <string name="person_username">用户名</string>
+    <string name="person_mobile">手机号码</string>
+    <string name="person_email">邮箱</string>
+    <string name="person_sex">性别</string>
+    <string name="person_log_out">退出当前帐号</string>
+    <string name="common_back_main">返回主页</string>
+
+    <string name="common_please_input_roomid_and_userid">用户没有允许需要的权限，加入通话失败</string>
+    <string name="videocall_title">TRTC 视频通话示例</string>
+    <string name="videocall_room_input_error_tip">"房间号和用户名不能为空"</string>
+    <string name="videocall_video_item">视频选项</string>
+    <string name="videocall_audio_item">音频选项</string>
+    <string name="videocall_user_back_camera">使用后置摄像头</string>
+    <string name="videocall_user_front_camera">使用前置摄像头</string>
+    <string name="videocall_open_camera">打开摄像头</string>
+    <string name="videocall_close_camera">关闭摄像头</string>
+    <string name="videocall_mute_audio">打开麦克风</string>
+    <string name="videocall_close_mute_audio">关闭麦克风</string>
+    <string name="videocall_use_speaker">使用扬声器</string>
+    <string name="videocall_use_receiver">使用听筒</string>
+    <string name="videocall_enter_room">进入房间</string>
+    <string name="videocall_please_input_userid">请输入用户名(必填项)</string>
+    <string name="videocall_please_input_roomid">请输入房间号(必填项)</string>
+    <string name="videocall_roomid">房间号:</string>
+
+    <string name="main_unreceive_call">未接视频来电</string>
+    <string name="main_unreceive_call_num">未接视频来电(%1$s)</string>
+    <string name="main_unreceive_call_number">通</string>
+    <string name="main_unfinish_work">未完成工单</string>
+    <string name="main_unfinish_work_num">未完成工单(%1$s)</string>
+    <string name="main_unfinish_work_number">个</string>
+    <string name="main_video_call">视频通话</string>
+    <string name="main_worksheet">工单管理</string>
+    <string name="main_device">设备绑码</string>
+    <string name="rationale_camera">此应用需要摄像头权限</string>
+    <string name="turn_on_flash">打开手电</string>
+    <string name="login_code_hint">请输入右侧结果</string>
+    <string name="login_code">验证码</string>
+    <string name="login_logo_title">服务商登录</string>
+    <string name="device_code_num">二维码编号:</string>
+    <string name="device_code_branch">二维码批次:</string>
+
+
+</resources>
