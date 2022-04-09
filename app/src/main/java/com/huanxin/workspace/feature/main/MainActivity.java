@@ -3,9 +3,9 @@ package com.huanxin.workspace.feature.main;
 import static android.Manifest.permission.CAMERA;
 import static android.Manifest.permission.RECORD_AUDIO;
 import static android.Manifest.permission.WRITE_EXTERNAL_STORAGE;
-
 import static com.huanxin.workspace.Consts.RC_CAMERA_CONTACTS_PERM;
 
+import android.app.AlertDialog;
 import android.app.Dialog;
 import android.content.Context;
 import android.content.Intent;
@@ -199,7 +199,14 @@ public class MainActivity extends BaseMvpActivity<MainPresenter> implements Main
             requestPermissions(new String[]{CAMERA, WRITE_EXTERNAL_STORAGE, RECORD_AUDIO}, RC_CAMERA_CONTACTS_PERM);
         }
         if (!PermissionUtil.mHasPermissionOrHasHinted) {
-            checkAndRequestPermission();
+            AlertDialog dialog = new AlertDialog.Builder(this)
+                    .setIcon(R.drawable.ic_logo)//设置标题的图片
+                    .setTitle("权限申请")//设置对话框的标题
+                    .setMessage("需要同意相关权限才能接通后台音视频对话")//设置对话框的内容
+                    //设置对话框的按钮
+                    .setNegativeButton("取消", (dialog12, which) -> dialog12.dismiss())
+                    .setPositiveButton("确定", (dialog1, which) -> checkAndRequestPermission()).create();
+            dialog.show();
         }
     }
 
@@ -262,7 +269,7 @@ public class MainActivity extends BaseMvpActivity<MainPresenter> implements Main
                 PermissionUtil.mHasPermissionOrHasHinted = true;
             } else {
                 PermissionUtil.mHasPermissionOrHasHinted = false;
-                ToastUtils.showLong("Cannot open CallView when app is in background");
+                ToastUtils.showLong("应用程序处于后台时无法打开视频通话");
             }
         }
     }
