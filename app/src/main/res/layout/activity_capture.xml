@@ -27,7 +27,7 @@ viewKIND, either express or implied.
         android:layout_centerInParent="true"
         android:layout_gravity="center"/>
 
-    <com.ming.workspace.util.camera.ViewfinderView
+    <com.huanxin.workspace.util.camera.ViewfinderView
         android:id="@+id/viewfinder_view"
         android:layout_width="fill_parent"
         android:layout_height="fill_parent"

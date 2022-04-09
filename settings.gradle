@@ -1,2 +1,5 @@
 include ':app'
-rootProject.name='Printer'
+include ':tuicalling'
+include ':tuicore'
+include ':debug'
+rootProject.name='workspace'

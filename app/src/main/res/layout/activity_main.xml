@@ -7,7 +7,7 @@
     android:background="@color/background"
     android:fitsSystemWindows="true"
     android:orientation="vertical"
-    tools:context="com.ming.workspace.feature.main.MainActivity">
+    tools:context="com.huanxin.workspace.feature.main.MainActivity">
 
 
     <LinearLayout

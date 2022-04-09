@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">Printer</string>
+    <string name="app_name">码上售后服务商版</string>
     <string name="login_accountId">主账号ID</string>
     <string name="login_username">用户名</string>
     <string name="login_password">密码</string>
@@ -70,6 +70,10 @@
     <string name="login_logo_title">服务商登录</string>
     <string name="device_code_num">二维码编号:</string>
     <string name="device_code_branch">二维码批次:</string>
+    <string name="app_toast_login_fail">登录失败 [%d]%s</string>
+    <string name="user_sig_expired">您的用户签名信息已过期,请重新登录</string>
+    <string name="btn_confirm">确定</string>
+    <string name="app_permission_hint">为了应用在后台时响应通话请求,请到设置中打开应用“后台拉起界面”权限</string>
 
 
 </resources>

@@ -1,0 +1,29 @@
+{
+    "tpns": {
+        "access_id": "1580010889",
+        "access_key": "AAUIXNJXC8G1"
+    },
+    "com.huanxin.workspace": {
+        "channel": {
+            "enable": true,
+            "huawei": {
+                "app_id": "105891115"
+            },
+            "xiaomi": {
+                "app_id": "2882303761520149280",
+                "app_key": "5232014988280"
+            },
+            "vivo": {
+                "app_id": "105552559",
+                "app_key": "6f332ad3dbd91584c1e5a56c5be0f040"
+            },
+            "oppo": {
+                "app_id": "6c7391d6279642de9653a6091eb20074",
+                "app_key": "6b1f1eb0068c47e79ac5cf3e1218a2a4"
+            }
+        }
+    },
+    "debug": true,
+    "version": "1.3.2.0-release",
+    "upgrade": false
+}

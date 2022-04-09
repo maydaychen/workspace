@@ -4,10 +4,14 @@ buildscript {
     repositories {
         google()
         jcenter()
+        mavenCentral()
         maven { url "https://jitpack.io" }
+        maven { url 'https://developer.huawei.com/repo/' }
     }
     dependencies {
-        classpath 'com.android.tools.build:gradle:3.5.3'
+        classpath 'com.android.tools.build:gradle:3.5.4'
+        classpath 'com.huawei.agconnect:agcp:1.6.0.300'
+        classpath "com.tencent.android.tpns:tpnsplugin:1.8.0"
 
         // NOTE: Do not place your application dependencies here; they belong
         // in the individual module build.gradle files
@@ -16,10 +20,19 @@ buildscript {
 
 allprojects {
     repositories {
+        flatDir {
+            dirs project(':app').file('libs')
+        }
         google()
         jcenter()
+        mavenCentral()
         maven { url "https://jitpack.io" }
+        maven {url 'https://developer.huawei.com/repo/'}
     }
+}
+ext {
+    liteavSdk = "com.tencent.liteav:LiteAVSDK_TRTC:latest.release"
+    imSdk = "com.tencent.imsdk:imsdk-plus:latest.release"
 }
 
 task clean(type: Delete) {

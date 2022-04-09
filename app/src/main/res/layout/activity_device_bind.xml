@@ -6,7 +6,7 @@
     android:layout_height="match_parent"
     tools:context=".feature.device.bind.DeviceBindActivity">
 
-    <com.ming.workspace.widget.CustomTitleBar
+    <com.huanxin.workspace.widget.CustomTitleBar
         android:id="@+id/ct_device"
         android:layout_width="match_parent"
         android:layout_height="40dp"
