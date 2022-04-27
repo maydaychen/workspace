@@ -2,12 +2,6 @@ package com.huanxin.workspace.base;
 
 import android.content.Context;
 
-/**
- * Describe：所有View基类
- *
- * @author yi.chen
- * @date 2018/10/17
- */
 
 public interface IBaseView {
 

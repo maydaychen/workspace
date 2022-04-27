@@ -8,13 +8,7 @@ import androidx.annotation.Nullable;
 import com.huanxin.workspace.R;
 
 
-/**
- * @author : yi.chen
- * e-mail : yi.chen@nttdata.com
- * date   : 2019/9/5  13:53
- * desc   :
- * version: 1.0
- */
+
 public abstract class BaseMvpFragment<P extends BasePresenter> extends BaseFragment implements IBaseView {
     protected P presenter;
 

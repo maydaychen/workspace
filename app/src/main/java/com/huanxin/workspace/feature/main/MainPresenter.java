@@ -7,13 +7,7 @@ import com.huanxin.workspace.data.CallListBean;
 import com.huanxin.workspace.data.WorkListBean;
 import com.huanxin.workspace.http.ProgressErrorSubscriber;
 
-/**
- * @author : yi.chen
- * e-mail : yi.chen@nttdata.com
- * date   : 2020/1/10  17:33
- * desc   :
- * version: 1.0
- */
+
 
 public class MainPresenter extends BasePresenter<MainContract.Model, MainContract.View>
         implements MainContract.Presenter {

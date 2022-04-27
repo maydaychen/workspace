@@ -1,5 +1,7 @@
 package com.huanxin.workspace.feature.main.call;
 
+import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -39,7 +41,6 @@ public class CallFragment extends BaseMvpFragment<CallPresenter> implements Call
     }
 
     public static CallFragment newInstance(String param1, String param2) {
-
         return new CallFragment();
     }
 
@@ -63,7 +64,15 @@ public class CallFragment extends BaseMvpFragment<CallPresenter> implements Call
         mRvMainCall.setLayoutManager(new LinearLayoutManager(getContext()));
         callAdapter = new CallAdapter(R.layout.item_main_call_list, callList);
         mRvMainCall.setAdapter(callAdapter);
-
+        callAdapter.setOnItemClickListener((adapter, view, position) -> {
+            callPhone(callList.get(position).getUserPhone());
+        });
+        View empty = LayoutInflater.from(getContext()).inflate(R.layout.empty_view, null, false);
+        callAdapter.setEmptyView(empty);
+        callAdapter.setOnLoadMoreListener(() -> {
+            pageNum++;
+            presenter.getCallList();
+        }, mRvMainCall);
     }
 
     @Override
@@ -94,10 +103,21 @@ public class CallFragment extends BaseMvpFragment<CallPresenter> implements Call
     public void getListSuccess(List<CallListBean.DataBean.RecordsBean> userBean) {
         callList.addAll(userBean);
         callAdapter.notifyDataSetChanged();
+        callAdapter.loadMoreComplete();
+        if (userBean.size() == 0) {
+            callAdapter.loadMoreEnd();
+        }
     }
 
     @Override
     public void getListFail(CallListBean user) {
 
+    }
+
+    public void callPhone(String phoneNum) {
+        Intent intent = new Intent(Intent.ACTION_DIAL);
+        Uri data = Uri.parse("tel:" + phoneNum);
+        intent.setData(data);
+        startActivity(intent);
     }
 }

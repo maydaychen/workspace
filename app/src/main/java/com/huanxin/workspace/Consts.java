@@ -16,6 +16,10 @@ public class Consts {
      */
     public static final String TOKEN = "token";
     /**
+     * 用户是否已经登录
+     */
+    public static final String LOGED = "loged";
+    /**
      * 用户名的key
      */
     public static final String USERNAME = "username";

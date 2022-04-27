@@ -17,6 +17,6 @@ public class pageUtils {
         String strToken = new String(Base64.decode(token.split("\\.")[1], 0));
         Gson gson = new Gson();
         UserTokenBean personToken = gson.fromJson(strToken, UserTokenBean.class);
-        return personToken.getEnterprise_id();
+        return personToken.getUser_id();
     }
 }

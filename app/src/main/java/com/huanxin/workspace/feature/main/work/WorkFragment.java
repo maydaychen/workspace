@@ -54,9 +54,15 @@ public class WorkFragment extends BaseMvpFragment<WorkPresenter> implements Work
     @Override
     protected void initView() {
         mRvMainWork.setLayoutManager(new LinearLayoutManager(getContext()));
-        workList.add(new WorkListBean());
+//        workList.add(new WorkListBean());
         workAdapter = new WorkAdapter(R.layout.item_main_work_list, workList);
         mRvMainWork.setAdapter(workAdapter);
+        View empty = LayoutInflater.from(getContext()).inflate(R.layout.empty_view, null, false);
+        workAdapter.setEmptyView(empty);
+        workAdapter.setOnLoadMoreListener(() -> {
+//            page++;
+            presenter.getWorkList();
+        }, mRvMainWork);
     }
 
     @Override

@@ -18,11 +18,11 @@
 
             <ImageView
                 android:id="@+id/iv_main_work"
+                android:layout_width="40dp"
+                android:layout_height="40dp"
                 android:layout_centerVertical="true"
                 android:layout_marginHorizontal="@dimen/margin_size_12dp"
-                android:layout_marginVertical="@dimen/margin_size_14dp"
-                android:layout_width="40dp"
-                android:layout_height="40dp" />
+                android:layout_marginVertical="@dimen/margin_size_14dp" />
 
             <TextView
                 android:id="@+id/tv_main_work_name"
@@ -77,7 +77,7 @@
                 android:text="工单类型：" />
 
             <TextView
-                android:id="@+id/tv_call_device_name"
+                android:id="@+id/tv_work_type"
                 style="@style/CommonTitleLeft"
                 android:layout_alignParentEnd="true" />
         </RelativeLayout>
@@ -96,6 +96,7 @@
                 android:text="问题描述：" />
 
             <TextView
+                android:id="@+id/tv_work_desc"
                 style="@style/CommonTitleLeft"
                 android:layout_alignParentEnd="true" />
         </RelativeLayout>
@@ -114,6 +115,7 @@
                 android:text="报修人：" />
 
             <TextView
+                android:id="@+id/tv_work_phone"
                 style="@style/CommonTitleLeft"
                 android:layout_alignParentEnd="true" />
         </RelativeLayout>
@@ -132,6 +134,7 @@
                 android:text="报修时间：" />
 
             <TextView
+                android:id="@+id/tv_work_time"
                 style="@style/CommonTitleLeft"
                 android:layout_alignParentEnd="true" />
         </RelativeLayout>
@@ -150,6 +153,7 @@
                 android:text="设备归属：" />
 
             <TextView
+                android:id="@+id/tv_work_below"
                 style="@style/CommonTitleLeft"
                 android:layout_alignParentEnd="true" />
         </RelativeLayout>

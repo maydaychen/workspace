@@ -1,12 +1,6 @@
 package com.huanxin.workspace.data;
 
-/**
- * @author : yi.chen
- * e-mail : yi.chen@nttdata.com
- * date   : 2020/1/8  11:44
- * desc   :
- * version: 1.0
- */
+
 public class BaseBean {
 
     /**

@@ -8,13 +8,7 @@ import com.huanxin.workspace.data.CodeDetailBean;
 import com.huanxin.workspace.data.DeviceListBean;
 import com.huanxin.workspace.http.ProgressErrorSubscriber;
 
-/**
- * @author : yi.chen
- * e-mail : yi.chen@nttdata.com
- * date   : 2020/1/10  17:33
- * desc   :
- * version: 1.0
- */
+
 
 public class BindPresenter extends BasePresenter<BindContract.Model, BindContract.View>
         implements BindContract.Presenter {

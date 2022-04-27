@@ -5,13 +5,7 @@ import android.content.SharedPreferences;
 
 import java.util.HashSet;
 
-/**
- * @author : yi.chen
- * e-mail : yi.chen@nttdata.com
- * date   : 2019/8/1917:31
- * desc   :
- * version: 1.0
- */
+
 
 public class SharedPreferencesUtils {
 

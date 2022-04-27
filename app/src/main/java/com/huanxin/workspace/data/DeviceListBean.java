@@ -58,6 +58,7 @@ public class DeviceListBean {
          * productId
          */
         private String productId;
+        private String deviceImage;
         /**
          * categoryId
          */
@@ -231,6 +232,14 @@ public class DeviceListBean {
 
         public void setProductName(String productName) {
             this.productName = productName;
+        }
+
+        public String getDeviceImage() {
+            return deviceImage;
+        }
+
+        public void setDeviceImage(String deviceImage) {
+            this.deviceImage = deviceImage;
         }
     }
 }

@@ -12,13 +12,6 @@ import android.widget.TextView;
 import com.huanxin.workspace.R;
 
 
-/**
- * @author : yi.chen
- * e-mail : yi.chen@nttdata.com
- * date   : 2019/9/12  13:53
- * desc   :
- * version: 1.0
- */
 public class CustomTitleBar extends RelativeLayout {
 
     private TextView tvBack;

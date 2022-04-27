@@ -7,13 +7,7 @@ import com.huanxin.workspace.http.ProgressErrorSubscriber;
 
 import java.util.List;
 
-/**
- * @author : yi.chen
- * e-mail : yi.chen@nttdata.com
- * date   : 2020/1/10  17:33
- * desc   :
- * version: 1.0
- */
+
 public interface CallContract {
 
     interface Model extends IBaseModel {

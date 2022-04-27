@@ -18,11 +18,11 @@ public class UnbindDeviceAdapter extends BaseQuickAdapter<DeviceListBean.DataBea
 
     @Override
     protected void convert(BaseViewHolder helper, DeviceListBean.DataBean item) {
-        helper.setText(R.id.tv_device_name, item.getTenantId())
+        helper.setText(R.id.tv_device_name, item.getSn())
                 .setText(R.id.tv_device_desc, item.getProductName());
 //                .addOnClickListener(R.id.products_pic);
-        if (item.getBatteryImage() != null) {
-            Glide.with(mContext).load(item.getBatteryImage()).into((ImageView) helper.getView(R.id.iv_device_logo));
+        if (item.getDeviceImage() != null) {
+            Glide.with(mContext).load(item.getDeviceImage()).into((ImageView) helper.getView(R.id.iv_device_logo));
         }
     }
 }

@@ -10,13 +10,7 @@ import com.huanxin.workspace.requestBean.BindReuest;
 
 import java.util.List;
 
-/**
- * @author : yi.chen
- * e-mail : yi.chen@nttdata.com
- * date   : 2020/1/10  17:33
- * desc   :
- * version: 1.0
- */
+
 public interface BindContract {
 
     interface Model extends IBaseModel {

@@ -38,7 +38,7 @@
                         android:id="@+id/tv_unreceive_call"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="2"
+                        android:text="0"
                         android:textColor="#026FFF"
                         android:textSize="48sp" />
 
@@ -71,7 +71,7 @@
                         android:id="@+id/tv_unfinish_work"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="2"
+                        android:text="0"
                         android:textColor="#026FFF"
                         android:textSize="48sp" />
 

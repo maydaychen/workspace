@@ -267,9 +267,9 @@ public abstract class BaseTUICallView extends FrameLayout implements TRTCCalling
         }
         //有用户退出时,需提示"**结束通话";
         if (null != userInfo && !TextUtils.isEmpty(userInfo.userName)) {
-            ToastUtils.showLong(mContext.getString(R.string.trtccalling_toast_user_end, userInfo.userName));
+            ToastUtils.showLong(mContext.getString(R.string.trtccalling_toast_user_end, userInfo.userName.split("-")[0]));
         } else {
-            showUserToast(userId, R.string.trtccalling_toast_user_end);
+            showUserToast(userId.split("-")[0], R.string.trtccalling_toast_user_end);
         }
     }
 
@@ -283,9 +283,9 @@ public abstract class BaseTUICallView extends FrameLayout implements TRTCCalling
         }
         //用户拒接时,需提示"**拒绝通话"
         if (null != userInfo && !TextUtils.isEmpty(userInfo.userName)) {
-            ToastUtils.showLong(mContext.getString(R.string.trtccalling_toast_user_reject_call, userInfo.userName));
+            ToastUtils.showLong(mContext.getString(R.string.trtccalling_toast_user_reject_call, userInfo.userName.split("-")[0]));
         } else {
-            showUserToast(userId, R.string.trtccalling_toast_user_reject_call);
+            showUserToast(userId.split("-")[0], R.string.trtccalling_toast_user_reject_call);
         }
     }
 
@@ -299,9 +299,9 @@ public abstract class BaseTUICallView extends FrameLayout implements TRTCCalling
         }
         //用户无响应时,需提示"**无响应"
         if (null != userInfo && !TextUtils.isEmpty(userInfo.userName)) {
-            ToastUtils.showLong(mContext.getString(R.string.trtccalling_toast_user_not_response, userInfo.userName));
+            ToastUtils.showLong(mContext.getString(R.string.trtccalling_toast_user_not_response, userInfo.userName.split("-")[0]));
         } else {
-            showUserToast(userId, R.string.trtccalling_toast_user_not_response);
+            showUserToast(userId.split("-")[0], R.string.trtccalling_toast_user_not_response);
         }
     }
 
@@ -315,9 +315,9 @@ public abstract class BaseTUICallView extends FrameLayout implements TRTCCalling
         }
         //用户忙线时,需提示"**忙线"
         if (null != userInfo && !TextUtils.isEmpty(userInfo.userName)) {
-            ToastUtils.showLong(mContext.getString(R.string.trtccalling_toast_user_busy, userInfo.userName));
+            ToastUtils.showLong(mContext.getString(R.string.trtccalling_toast_user_busy, userInfo.userName.split("-")[0]));
         } else {
-            showUserToast(userId, R.string.trtccalling_toast_user_busy);
+            showUserToast(userId.split("-")[0], R.string.trtccalling_toast_user_busy);
         }
     }
 
@@ -325,7 +325,7 @@ public abstract class BaseTUICallView extends FrameLayout implements TRTCCalling
     public void onCallingCancel() {
         //主叫取消了通话,被叫提示"主叫取消通话"
         if (mSponsorUserInfo != null) {
-            ToastUtils.showLong(mContext.getString(R.string.trtccalling_toast_user_cancel_call, mSponsorUserInfo.userName));
+            ToastUtils.showLong(mContext.getString(R.string.trtccalling_toast_user_cancel_call, mSponsorUserInfo.userName.split("-")[0]));
         }
         finish();
     }
@@ -343,7 +343,7 @@ public abstract class BaseTUICallView extends FrameLayout implements TRTCCalling
     public void onCallEnd() {
         //通话结束退房,被叫提示"主叫结束通话"
         if (mSponsorUserInfo != null) {
-            ToastUtils.showLong(mContext.getString(R.string.trtccalling_toast_user_end, mSponsorUserInfo.userName));
+            ToastUtils.showLong(mContext.getString(R.string.trtccalling_toast_user_end, mSponsorUserInfo.userName.split("-")[0]));
         }
         finish();
     }

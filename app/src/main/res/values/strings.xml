@@ -73,7 +73,12 @@
     <string name="app_toast_login_fail">登录失败 [%d]%s</string>
     <string name="user_sig_expired">您的用户签名信息已过期,请重新登录</string>
     <string name="btn_confirm">确定</string>
+    <string name="telephone_time">报修时间：%1$s</string>
+    <string name="deveice_name">设备名称：%1$s</string>
+    <string name="deveice_owner">设备归属：%1$s</string>
     <string name="app_permission_hint">为了应用在后台时响应通话请求,请到设置中打开应用“后台拉起界面”权限</string>
+    <string name="remark">备注</string>
+    <string name="commit">提交</string>
 
 
 </resources>

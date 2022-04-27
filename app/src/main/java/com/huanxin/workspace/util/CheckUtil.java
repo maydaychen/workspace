@@ -3,13 +3,7 @@ package com.huanxin.workspace.util;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
-/**
- * @author : yi.chen
- * e-mail : yi.chen@nttdata.com
- * date   : 2020/1/10  17:45
- * desc   :
- * version: 1.0
- */
+
 public class CheckUtil {
     private static Pattern pattern = Pattern.compile("\\w+([-+.]\\w+)*@\\w+([-.]\\w+)*\\.\\w+([-.]\\w+)*");
 

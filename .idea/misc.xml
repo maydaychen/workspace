@@ -5,14 +5,20 @@
       <map>
         <entry key="../../../../../layout/custom_preview.xml" value="0.32037037037037036" />
         <entry key="../../../../layout/custom_preview.xml" value="0.24947916666666667" />
+        <entry key="../../../Library/Android/sdk/platforms/android-28/data/res/layout/simple_spinner_dropdown_item.xml" value="0.29243266353142366" />
+        <entry key="../../../Library/Android/sdk/platforms/android-28/data/res/layout/simple_spinner_item.xml" value="0.29243266353142366" />
         <entry key="app/src/main/res/drawable-mdpi/bg_item_main_list.xml" value="0.201" />
         <entry key="app/src/main/res/drawable-xhdpi/common_button_bg.xml" value="0.201" />
         <entry key="app/src/main/res/drawable-xhdpi/videocall_background.xml" value="0.1945" />
         <entry key="app/src/main/res/drawable/bg_search.xml" value="0.201" />
         <entry key="app/src/main/res/drawable/border_login_button.xml" value="0.34" />
         <entry key="app/src/main/res/drawable/border_main_call_status.xml" value="0.1" />
+        <entry key="app/src/main/res/drawable/border_white_blue_stroke.xml" value="0.201" />
         <entry key="app/src/main/res/drawable/edit_background.xml" value="0.1" />
         <entry key="app/src/main/res/drawable/ic_launcher_foreground.xml" value="0.1" />
+        <entry key="app/src/main/res/drawable/layout_spinner_common.xml" value="0.1" />
+        <entry key="app/src/main/res/drawable/textview_round_border.xml" value="0.201" />
+        <entry key="app/src/main/res/layout/activity_call.xml" value="0.14291684078562475" />
         <entry key="app/src/main/res/layout/activity_capture.xml" value="0.15305686190679776" />
         <entry key="app/src/main/res/layout/activity_device.xml" value="0.3809921264648438" />
         <entry key="app/src/main/res/layout/activity_device_bind.xml" value="0.25" />
@@ -21,18 +27,40 @@
         <entry key="app/src/main/res/layout/activity_main.xml" value="0.33" />
         <entry key="app/src/main/res/layout/activity_main2.xml" value="0.1" />
         <entry key="app/src/main/res/layout/activity_video.xml" value="0.29243266353142366" />
+        <entry key="app/src/main/res/layout/activity_workspace.xml" value="0.29243266353142366" />
+        <entry key="app/src/main/res/layout/activity_workspace_create.xml" value="0.35004119873046885" />
+        <entry key="app/src/main/res/layout/activity_workspace_detail.xml" value="0.29116058349609375" />
+        <entry key="app/src/main/res/layout/activity_workspace_update.xml" value="0.29243266353142366" />
         <entry key="app/src/main/res/layout/app_show_tip_dialog_confirm.xml" value="0.29243266353142366" />
+        <entry key="app/src/main/res/layout/empty_view.xml" value="0.29243266353142366" />
         <entry key="app/src/main/res/layout/fragment_call.xml" value="0.1" />
         <entry key="app/src/main/res/layout/fragment_home.xml" value="0.1" />
         <entry key="app/src/main/res/layout/fragment_work.xml" value="0.23164097914777879" />
         <entry key="app/src/main/res/layout/item_binded_device.xml" value="0.34023895263671877" />
         <entry key="app/src/main/res/layout/item_main_call_list.xml" value="0.29243266353142366" />
         <entry key="app/src/main/res/layout/item_main_work_list.xml" value="0.4091903686523438" />
-        <entry key="app/src/main/res/layout/item_unbind_device.xml" value="0.55" />
+        <entry key="app/src/main/res/layout/item_pic.xml" value="0.29243266353142366" />
+        <entry key="app/src/main/res/layout/item_unbind_device.xml" value="0.375" />
+        <entry key="app/src/main/res/layout/item_workspace_list.xml" value="0.29243266353142366" />
+        <entry key="app/src/main/res/layout/layout_device_info.xml" value="0.335" />
+        <entry key="app/src/main/res/layout/layout_engineer_info.xml" value="0.29243266353142366" />
+        <entry key="app/src/main/res/layout/layout_handle_result.xml" value="0.29243266353142366" />
+        <entry key="app/src/main/res/layout/layout_spinner_common.xml" value="0.1" />
+        <entry key="app/src/main/res/layout/layout_spinner_drop.xml" value="0.1" />
         <entry key="app/src/main/res/layout/layout_titlebar.xml" value="0.26168670654296877" />
+        <entry key="app/src/main/res/layout/layout_worksheet_info.xml" value="0.1" />
+        <entry key="app/src/main/res/layout/layout_workspace_process.xml" value="0.29243266353142366" />
         <entry key="app/src/main/res/layout/videocall_popup_layout.xml" value="0.29243266353142366" />
         <entry key="app/src/main/res/layout/videocall_view_floating_default.xml" value="0.29243266353142366" />
         <entry key="app/src/main/res/mipmap-anydpi-v26/ic_launcher.xml" value="0.201" />
+        <entry key="tuicalling/src/main/res/drawable/trtccalling_bg_camera.xml" value="0.2875" />
+        <entry key="tuicalling/src/main/res/drawable/trtccalling_bg_mute_mic.xml" value="0.201" />
+        <entry key="tuicalling/src/main/res/layout/trtccalling_group_videocall_activity_call_main.xml" value="0.29243266353142366" />
+        <entry key="tuicalling/src/main/res/layout/trtccalling_videocall_activity_call_main.xml" value="0.29243266353142366" />
+        <entry key="tuicore/src/main/res/layout/core_pop_menu.xml" value="0.29243266353142366" />
+        <entry key="tuicore/src/main/res/layout/core_select_item_layout.xml" value="0.29243266353142366" />
+        <entry key="tuicore/src/main/res/layout/tuicore_selection_activity.xml" value="0.29243266353142366" />
+        <entry key="tuicore/src/main/res/layout/view_dialog.xml" value="0.29243266353142366" />
       </map>
     </option>
   </component>

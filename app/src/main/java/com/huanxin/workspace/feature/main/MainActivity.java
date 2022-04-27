@@ -3,7 +3,10 @@ package com.huanxin.workspace.feature.main;
 import static android.Manifest.permission.CAMERA;
 import static android.Manifest.permission.RECORD_AUDIO;
 import static android.Manifest.permission.WRITE_EXTERNAL_STORAGE;
+import static com.huanxin.workspace.Consts.LOGED;
 import static com.huanxin.workspace.Consts.RC_CAMERA_CONTACTS_PERM;
+import static com.huanxin.workspace.Consts.TOKEN;
+import static com.huanxin.workspace.util.pageUtils.getUserId;
 
 import android.app.AlertDialog;
 import android.app.Dialog;
@@ -29,11 +32,14 @@ import com.huanxin.workspace.R;
 import com.huanxin.workspace.base.BaseMvpActivity;
 import com.huanxin.workspace.data.CallListBean;
 import com.huanxin.workspace.data.WorkListBean;
+import com.huanxin.workspace.feature.call.CallActivity;
 import com.huanxin.workspace.feature.device.list.DeviceActivity;
 import com.huanxin.workspace.feature.login.LoginActivity;
 import com.huanxin.workspace.feature.main.call.CallFragment;
 import com.huanxin.workspace.feature.main.work.WorkFragment;
 import com.huanxin.workspace.feature.video.tpnspush.TPNSPushSetting;
+import com.huanxin.workspace.feature.workspace.WorkspaceActivity;
+import com.huanxin.workspace.util.SharedPreferencesUtils;
 import com.tencent.imsdk.BaseConstants;
 import com.tencent.imsdk.v2.V2TIMCallback;
 import com.tencent.imsdk.v2.V2TIMSDKConfig;
@@ -47,6 +53,7 @@ import com.tencent.qcloud.tuicore.TUILogin;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
 
 import butterknife.BindView;
 import butterknife.OnClick;
@@ -93,7 +100,9 @@ public class MainActivity extends BaseMvpActivity<MainPresenter> implements Main
     public void onViewClicked(View view) {
         switch (view.getId()) {
             case R.id.ll_main_video:
-                String time = String.valueOf(System.currentTimeMillis());
+                goActivity(CallActivity.class);
+
+//                String time = String.valueOf(System.currentTimeMillis());
 //                Intent intent = new Intent(this, VideoCallingActivity.class);
 //                intent.putExtra(Consts.ROOM_ID, "1256732");
 //                intent.putExtra(Consts.USER_ID, time.substring(time.length() - 8));
@@ -106,6 +115,7 @@ public class MainActivity extends BaseMvpActivity<MainPresenter> implements Main
 //                TUICallingImpl.sharedInstance(this).call(userIDs, TUICalling.Type.VIDEO);
                 break;
             case R.id.ll_main_work:
+                goActivity(WorkspaceActivity.class);
                 break;
             case R.id.ll_main_device:
                 goActivity(DeviceActivity.class);
@@ -122,8 +132,8 @@ public class MainActivity extends BaseMvpActivity<MainPresenter> implements Main
     @Override
     public void getCallListSuccess(CallListBean.DataBean callListBean) {
         mTvCall.setText(callListBean.getTotal() + "");
+        // todo 等后面能拿到了再按接口数量显示
         mTlMain.getTabAt(0).setText(String.format(getString(R.string.main_unreceive_call_num), callListBean.getTotal() + ""));
-
     }
 
     @Override
@@ -165,8 +175,7 @@ public class MainActivity extends BaseMvpActivity<MainPresenter> implements Main
                 startLoginActivity();
             }
         });
-//        String userid = getUserId((String) Objects.requireNonNull(SharedPreferencesUtils.getParam(getApplicationContext(), TOKEN, "")));
-        String userid = "2222";
+        String userid = getUserId((String) Objects.requireNonNull(SharedPreferencesUtils.getParam(getApplicationContext(), TOKEN, "")));
         TUILogin.login(userid,
                 GenerateTestUserSig.genTestUserSig(userid), new V2TIMCallback() {
                     @Override
@@ -189,6 +198,7 @@ public class MainActivity extends BaseMvpActivity<MainPresenter> implements Main
     }
 
     private void startLoginActivity() {
+        SharedPreferencesUtils.setParam(getApplicationContext(), LOGED, false);
         Intent intent = new Intent(this, LoginActivity.class);
         startActivity(intent);
         finish();
@@ -199,14 +209,7 @@ public class MainActivity extends BaseMvpActivity<MainPresenter> implements Main
             requestPermissions(new String[]{CAMERA, WRITE_EXTERNAL_STORAGE, RECORD_AUDIO}, RC_CAMERA_CONTACTS_PERM);
         }
         if (!PermissionUtil.mHasPermissionOrHasHinted) {
-            AlertDialog dialog = new AlertDialog.Builder(this)
-                    .setIcon(R.drawable.ic_logo)//设置标题的图片
-                    .setTitle("权限申请")//设置对话框的标题
-                    .setMessage("需要同意相关权限才能接通后台音视频对话")//设置对话框的内容
-                    //设置对话框的按钮
-                    .setNegativeButton("取消", (dialog12, which) -> dialog12.dismiss())
-                    .setPositiveButton("确定", (dialog1, which) -> checkAndRequestPermission()).create();
-            dialog.show();
+            checkAndRequestPermission();
         }
     }
 
@@ -216,45 +219,54 @@ public class MainActivity extends BaseMvpActivity<MainPresenter> implements Main
      */
     private void checkAndRequestPermission() {
         if (!PermissionUtil.hasPermission(this)) {
-            //vivo的后台权限界面跳转
-            if (BrandUtil.isBrandVivo()) {
-                Intent localIntent;
-                if (((Build.MODEL.contains("Y85")) && (!Build.MODEL.contains("Y85A")))
-                        || (Build.MODEL.contains("vivo Y53L"))) {
-                    localIntent = new Intent();
-                    localIntent.setClassName("com.vivo.permissionmanager",
-                            "com.vivo.permissionmanager.activity.PurviewTabActivity");
-                    localIntent.putExtra("packagename", getPackageName());
-                    localIntent.putExtra("tabId", "1");
-                    IntentUtils.safeStartActivity(this, localIntent);
-                } else {
-                    localIntent = new Intent();
-                    localIntent.setClassName("com.vivo.permissionmanager",
-                            "com.vivo.permissionmanager.activity.SoftPermissionDetailActivity");
-                    localIntent.setAction("secure.intent.action.softPermissionDetail");
-                    localIntent.putExtra("packagename", getPackageName());
-                    IntentUtils.safeStartActivity(this, localIntent);
-                }
-                return;
-            } else if (BrandUtil.isBrandXiaoMi()) {
-                final Dialog dialog = new Dialog(this, R.style.logoutDialogStyle);
-                dialog.setContentView(R.layout.app_show_tip_dialog_confirm);
-                TextView tvMessage = dialog.findViewById(R.id.tv_message);
-                Button btnOk = dialog.findViewById(R.id.btn_negative);
-                tvMessage.setText(R.string.app_permission_hint);
-                btnOk.setOnClickListener(v -> dialog.dismiss());
-                dialog.setCancelable(false);
-                dialog.show();
-                //弹出一次提示后,应用未杀死前不再进行提示了
-                PermissionUtil.mHasPermissionOrHasHinted = true;
-                return;
-            }
-            //其他厂商
-            if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.M) {
-                Intent intent = new Intent(Settings.ACTION_MANAGE_OVERLAY_PERMISSION);
-                intent.setData(Uri.parse("package:" + getPackageName()));
-                startActivityForResult(intent, PERMISSION_RESULT_CODE);
-            }
+            AlertDialog dialog = new AlertDialog.Builder(this)
+                    .setIcon(R.drawable.ic_logo)//设置标题的图片
+                    .setTitle("权限申请")//设置对话框的标题
+                    .setMessage("需要同意相关权限才能接通后台音视频对话")//设置对话框的内容
+                    //设置对话框的按钮
+                    .setNegativeButton("取消", (dialog12, which) -> dialog12.dismiss())
+                    .setPositiveButton("确定", (dialog1, which) -> {
+                        //vivo的后台权限界面跳转
+                        if (BrandUtil.isBrandVivo()) {
+                            Intent localIntent;
+                            if (((Build.MODEL.contains("Y85")) && (!Build.MODEL.contains("Y85A")))
+                                    || (Build.MODEL.contains("vivo Y53L"))) {
+                                localIntent = new Intent();
+                                localIntent.setClassName("com.vivo.permissionmanager",
+                                        "com.vivo.permissionmanager.activity.PurviewTabActivity");
+                                localIntent.putExtra("packagename", getPackageName());
+                                localIntent.putExtra("tabId", "1");
+                                IntentUtils.safeStartActivity(this, localIntent);
+                            } else {
+                                localIntent = new Intent();
+                                localIntent.setClassName("com.vivo.permissionmanager",
+                                        "com.vivo.permissionmanager.activity.SoftPermissionDetailActivity");
+                                localIntent.setAction("secure.intent.action.softPermissionDetail");
+                                localIntent.putExtra("packagename", getPackageName());
+                                IntentUtils.safeStartActivity(this, localIntent);
+                            }
+                            return;
+                        } else if (BrandUtil.isBrandXiaoMi()) {
+                            final Dialog midialog = new Dialog(this, R.style.logoutDialogStyle);
+                            midialog.setContentView(R.layout.app_show_tip_dialog_confirm);
+                            TextView tvMessage = midialog.findViewById(R.id.tv_message);
+                            Button btnOk = midialog.findViewById(R.id.btn_negative);
+                            tvMessage.setText(R.string.app_permission_hint);
+                            btnOk.setOnClickListener(v -> midialog.dismiss());
+                            midialog.setCancelable(false);
+                            midialog.show();
+                            //弹出一次提示后,应用未杀死前不再进行提示了
+                            PermissionUtil.mHasPermissionOrHasHinted = true;
+                            return;
+                        }
+                        //其他厂商
+                        if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.M) {
+                            Intent intent = new Intent(Settings.ACTION_MANAGE_OVERLAY_PERMISSION);
+                            intent.setData(Uri.parse("package:" + getPackageName()));
+                            startActivityForResult(intent, PERMISSION_RESULT_CODE);
+                        }
+                    }).create();
+            dialog.show();
         } else {
             //已经有权限
             PermissionUtil.mHasPermissionOrHasHinted = true;

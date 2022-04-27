@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.core.widget.NestedScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".feature.workspace.detail.WorkspaceDetailActivity">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <com.huanxin.workspace.widget.CustomTitleBar
+            android:id="@+id/ct_workspace"
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            app:title="工单详情" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/margin_size_10dp"
+            android:background="@color/white"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/tv_engineer_title"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/margin_size_16dp"
+                android:paddingVertical="@dimen/margin_size_16dp"
+                android:text="工单进度"
+                android:textColor="#2D3033"
+                android:textSize="@dimen/font_size_16sp" />
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:layout_marginHorizontal="@dimen/margin_size_16dp"
+                android:background="@color/lineColor" />
+
+            <com.huanxin.workspace.widget.PointProcessBar
+                android:id="@+id/pb_worksheet"
+                android:layout_width="match_parent"
+                android:layout_height="60dp"
+                android:layout_marginHorizontal="@dimen/margin_size_16dp"
+                android:layout_marginTop="@dimen/margin_size_10dp" />
+        </LinearLayout>
+
+        <com.huanxin.workspace.widget.workspace.PeopleInfo
+            android:id="@+id/ei_workspace_detail"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/margin_size_10dp" />
+
+        <com.huanxin.workspace.widget.workspace.DeviceInfo
+            android:id="@+id/df_workspace_detail"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/margin_size_10dp" />
+
+        <com.huanxin.workspace.widget.workspace.HandleResult
+            android:id="@+id/hr_workspace_detail"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/margin_size_10dp" />
+
+        <com.huanxin.workspace.widget.workspace.WorksheetInfo
+            android:id="@+id/wi_workspace_detail"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/margin_size_10dp" />
+    </LinearLayout>
+
+
+</androidx.core.widget.NestedScrollView>

@@ -4,11 +4,13 @@ import static android.Manifest.permission.CAMERA;
 import static android.Manifest.permission.RECORD_AUDIO;
 import static android.Manifest.permission.WRITE_EXTERNAL_STORAGE;
 import static com.huanxin.workspace.Consts.ACCOUNTID;
+import static com.huanxin.workspace.Consts.LOGED;
 import static com.huanxin.workspace.Consts.PASSWORD;
 import static com.huanxin.workspace.Consts.RC_CAMERA_CONTACTS_PERM;
 import static com.huanxin.workspace.Consts.TOKEN;
 import static com.huanxin.workspace.Consts.USERNAME;
 import static com.huanxin.workspace.util.Base64Util.stringToBitmap;
+import static com.huanxin.workspace.util.pageUtils.getUserId;
 
 import android.content.Context;
 import android.content.pm.PackageManager;
@@ -73,6 +75,9 @@ public class LoginActivity extends BaseMvpActivity<LoginPresenter> implements Lo
         mEtPassword.setText((String) SharedPreferencesUtils.getParam(getApplicationContext(), PASSWORD, ""));
         mEtAccount.setText((String) SharedPreferencesUtils.getParam(getApplicationContext(), ACCOUNTID, ""));
         presenter.sendCode();
+        if ((Boolean) SharedPreferencesUtils.getParam(getApplicationContext(), LOGED, false)) {
+            goActivity(MainActivity.class);
+        }
     }
 
     @Override
@@ -99,6 +104,7 @@ public class LoginActivity extends BaseMvpActivity<LoginPresenter> implements Lo
         SharedPreferencesUtils.setParam(getApplicationContext(), PASSWORD, mEtPassword.getText().toString());
         SharedPreferencesUtils.setParam(getApplicationContext(), ACCOUNTID, mEtAccount.getText().toString());
         SharedPreferencesUtils.setParam(getApplicationContext(), TOKEN, userBean.getData().getAccess_token());
+        SharedPreferencesUtils.setParam(getApplicationContext(), LOGED, true);
         V2TIMSDKConfig config = new V2TIMSDKConfig();
         config.setLogLevel(V2TIMSDKConfig.V2TIM_LOG_DEBUG);
         int id = GenerateTestUserSig.SDKAPPID;
@@ -114,8 +120,8 @@ public class LoginActivity extends BaseMvpActivity<LoginPresenter> implements Lo
 
             }
         });
-//        String userId = getUserId(userBean.getData().getAccess_token());
-        String userId = "2222";
+        String userId = getUserId(userBean.getData().getAccess_token());
+//        String userId = "2222";
         TUILogin.login(userId,
                 GenerateTestUserSig.genTestUserSig(userId),
                 new V2TIMCallback() {

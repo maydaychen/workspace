@@ -5,13 +5,6 @@ import android.app.Activity;
 import android.content.Context;
 import android.os.Build;
 
-/**
- * @author : yi.chen
- * e-mail : yi.chen@nttdata.com
- * date   : 2019/8/19 17:31
- * desc   :
- * version: 1.0
- */
 
 public class StatusBarCompat {
 

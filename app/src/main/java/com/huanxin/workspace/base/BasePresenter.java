@@ -11,12 +11,6 @@ import java.lang.reflect.Proxy;
 
 import retrofit2.HttpException;
 
-/**
- * Describe：Presenter基类
- *
- * @author yi.chen
- * @date 2018/10/17
- */
 
 @SuppressWarnings("unchecked")
 public abstract class BasePresenter<M extends IBaseModel, V extends IBaseView> {

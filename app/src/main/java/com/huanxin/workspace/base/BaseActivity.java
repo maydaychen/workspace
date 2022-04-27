@@ -18,13 +18,7 @@ import java.util.Objects;
 import butterknife.ButterKnife;
 import pub.devrel.easypermissions.EasyPermissions;
 
-/**
- * @author : yi.chen
- * e-mail : yi.chen@nttdata.com
- * date   : 2020/3/24  14:08
- * desc   :
- * version: 1.0
- */
+
 public abstract class BaseActivity extends AppCompatActivity {
     protected Dialog loadingDialog;
 

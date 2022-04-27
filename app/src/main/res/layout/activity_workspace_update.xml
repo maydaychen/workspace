@@ -1,0 +1,182 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.core.widget.NestedScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".feature.workspace.create.WorkspaceCreateActivity">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <com.huanxin.workspace.widget.CustomTitleBar
+            android:id="@+id/ct_workspace"
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            app:title="创建工单" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/margin_size_10dp"
+            android:background="@color/white"
+            android:orientation="vertical"
+            android:paddingHorizontal="@dimen/margin_size_16dp">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="工单类型"
+                    android:textColor="#2D3033" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="*"
+                    android:textColor="#DB232D" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                android:background="@drawable/edit_background"
+                android:gravity="center_vertical">
+
+                <Spinner
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/margin_size_20dp">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="问题描述"
+                    android:textColor="#2D3033" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="*"
+                    android:textColor="#DB232D" />
+            </LinearLayout>
+
+            <EditText
+                style="@style/NormalEditText"
+                android:layout_width="match_parent"
+                android:layout_height="80dp"
+                android:gravity="top"
+                android:singleLine="false"
+                android:hint="请输入您所遇到的问题"
+                android:padding="@dimen/margin_size_16dp"
+                android:textSize="@dimen/font_size_16sp" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/margin_size_20dp">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="负责工程师"
+                    android:textColor="#2D3033" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="*"
+                    android:textColor="#DB232D" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                android:background="@drawable/edit_background"
+                android:gravity="center_vertical">
+
+                <Spinner
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content" />
+            </LinearLayout>
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/margin_size_20dp"
+                android:text="建议处理方式"
+                android:textColor="#2D3033" />
+
+            <EditText
+                style="@style/NormalEditText"
+                android:layout_width="match_parent"
+                android:singleLine="false"
+                android:layout_height="80dp"
+                android:gravity="top"
+                android:hint="请输入您认为合适的处理方式"
+                android:padding="@dimen/margin_size_16dp"
+                android:textSize="@dimen/font_size_16sp" />
+
+            <TextView
+                android:id="@+id/tv_login"
+                style="@style/MiddleButton"
+                android:layout_marginHorizontal="0dp"
+                android:layout_marginVertical="20dp"
+                android:text="@string/commit" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/margin_size_10dp"
+            android:background="@color/white"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/tv_engineer_title"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/margin_size_16dp"
+                android:paddingVertical="@dimen/margin_size_16dp"
+                android:text="工单进度"
+                android:textColor="#2D3033"
+                android:textSize="@dimen/font_size_16sp" />
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:layout_marginHorizontal="@dimen/margin_size_16dp"
+                android:background="@color/lineColor" />
+
+            <com.huanxin.workspace.widget.PointProcessBar
+                android:id="@+id/pb_worksheet"
+                android:layout_width="match_parent"
+                android:layout_height="60dp"
+                android:layout_marginHorizontal="@dimen/margin_size_16dp"
+                android:layout_marginTop="@dimen/margin_size_10dp" />
+
+        </LinearLayout>
+
+        <com.huanxin.workspace.widget.workspace.DeviceInfo
+            android:id="@+id/df_workspace_detail"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/margin_size_10dp" />
+
+        <com.huanxin.workspace.widget.workspace.PeopleInfo
+            android:id="@+id/ei_workspace_detail"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/margin_size_10dp" />
+    </LinearLayout>
+</androidx.core.widget.NestedScrollView>

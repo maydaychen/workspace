@@ -172,6 +172,7 @@ public class CallListBean {
              * createTime
              */
             private String createTime;
+            private String tenantId;
 
             public String getId() {
                 return id;
@@ -235,6 +236,14 @@ public class CallListBean {
 
             public void setCreateTime(String createTime) {
                 this.createTime = createTime;
+            }
+
+            public String getTenantId() {
+                return tenantId;
+            }
+
+            public void setTenantId(String tenantId) {
+                this.tenantId = tenantId;
             }
         }
     }

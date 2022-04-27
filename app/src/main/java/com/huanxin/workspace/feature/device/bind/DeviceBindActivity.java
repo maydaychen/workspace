@@ -70,7 +70,7 @@ public class DeviceBindActivity extends BaseMvpActivity<BindPresenter> implement
                     if (b) {
                         selPosition = baseViewHolder.getLayoutPosition();
                         bindReuest.setId(Long.parseLong(item.getId()));
-                        notifyItemChanged(temp);
+                        notifyDataSetChanged();
                     }
                 });
 
@@ -119,6 +119,10 @@ public class DeviceBindActivity extends BaseMvpActivity<BindPresenter> implement
 
     @Override
     public void getCodeDetailSuccess(CodeDetailBean.DataBean dataBean) {
+        if (dataBean.getState() != 0 && dataBean.getState() != 3) {
+            Toast.makeText(this, "该二维码已绑定设备，请先解绑", Toast.LENGTH_SHORT).show();
+            finish();
+        }
         mTvNum.setText(dataBean.getTenantId());
         mTvBranch.setText(dataBean.getBatchId());
         if (dataBean.getFilePath() != null) {

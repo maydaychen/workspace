@@ -21,12 +21,12 @@
                 android:id="@+id/tv_useless_number"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:textStyle="bold"
                 android:paddingVertical="@dimen/margin_size_14dp"
                 android:paddingStart="@dimen/margin_size_12dp"
                 android:text="13665137658"
                 android:textColor="@color/fontBlue"
-                android:textSize="@dimen/font_size_18sp" />
+                android:textSize="@dimen/font_size_18sp"
+                android:textStyle="bold" />
 
             <TextView
                 android:id="@+id/tv_call_time"
@@ -40,6 +40,7 @@
                 android:textSize="@dimen/font_size_12sp" />
 
             <TextView
+                android:id="@+id/tv_call_status"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_alignParentEnd="true"
@@ -116,6 +117,38 @@
                 style="@style/CommonTitleLeft"
                 android:layout_alignParentEnd="true" />
         </RelativeLayout>
+
+        <TextView
+            android:id="@+id/item_bt_check_space"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/margin_size_10dp"
+            android:layout_marginEnd="@dimen/margin_size_12dp"
+            android:background="@drawable/border_white_blue_stroke"
+            android:paddingHorizontal="@dimen/margin_size_16dp"
+            android:paddingVertical="@dimen/margin_size_4dp"
+            android:text="查看工单"
+            android:textSize="@dimen/sp_12"
+            android:visibility="gone"
+            android:textColor="#026FFF"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/rl_title3" />
+
+        <TextView
+            android:id="@+id/item_bt_create_space"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/margin_size_10dp"
+            android:layout_marginEnd="@dimen/margin_size_12dp"
+            android:background="@drawable/border_login_button"
+            android:paddingHorizontal="@dimen/margin_size_16dp"
+            android:paddingVertical="@dimen/margin_size_4dp"
+            android:text="创建工单"
+            android:visibility="gone"
+            android:textSize="@dimen/sp_12"
+            android:textColor="@color/white"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/rl_title3" />
     </androidx.constraintlayout.widget.ConstraintLayout>
 
 </androidx.cardview.widget.CardView>

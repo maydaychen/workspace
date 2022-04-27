@@ -26,13 +26,7 @@ import java.lang.reflect.Constructor;
 import java.lang.reflect.Field;
 import java.lang.reflect.Method;
 
-/**
- * @author : yi.chen
- * e-mail : yi.chen@nttdata.com
- * date   : 2020/1/7  18:05
- * desc   :
- * version: 1.0
- */
+
 public class MyApplication extends Application {
     public static Context context;
     private static MyApplication mInstance;

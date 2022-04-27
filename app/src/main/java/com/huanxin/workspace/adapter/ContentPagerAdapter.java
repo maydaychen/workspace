@@ -6,13 +6,7 @@ import androidx.fragment.app.FragmentPagerAdapter;
 
 import java.util.ArrayList;
 
-/**
- * @author : yi.chen
- * e-mail : yi.chen@nttdata.com
- * date   : 2019/8/22  15:43
- * desc   :
- * version: 1.0
- */
+
 public class ContentPagerAdapter extends FragmentPagerAdapter {
     private ArrayList<String> tabTitleList;
     private ArrayList<Fragment> fragmentList;

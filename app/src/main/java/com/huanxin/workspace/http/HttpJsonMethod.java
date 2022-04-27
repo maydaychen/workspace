@@ -4,11 +4,17 @@ package com.huanxin.workspace.http;
 import static com.huanxin.workspace.Config.BASE_URL;
 
 import com.huanxin.workspace.data.BaseBean;
+import com.huanxin.workspace.data.CallBean;
 import com.huanxin.workspace.data.CallListBean;
 import com.huanxin.workspace.data.CodeBean;
 import com.huanxin.workspace.data.CodeDetailBean;
+import com.huanxin.workspace.data.DeviceDetailBean;
 import com.huanxin.workspace.data.DeviceListBean;
 import com.huanxin.workspace.data.UserBean;
+import com.huanxin.workspace.data.WorkspaceListBean;
+import com.huanxin.workspace.data.request.WorkspaceAddBean;
+import com.huanxin.workspace.data.request.WorkspaceDispatchBean;
+import com.huanxin.workspace.data.request.WorkspaceUpdateBean;
 import com.huanxin.workspace.requestBean.BindReuest;
 import com.huanxin.workspace.requestBean.LoginBean;
 import com.orhanobut.logger.Logger;
@@ -24,13 +30,6 @@ import rx.Subscriber;
 import rx.android.schedulers.AndroidSchedulers;
 import rx.schedulers.Schedulers;
 
-/**
- * @author : yi.chen
- * e-mail : yi.chen@nttdata.com
- * date   : 2019/8/19 17:31
- * desc   :
- * version: 1.0
- */
 
 public class HttpJsonMethod {
     private static final int DEFAULT_TIMEOUT = 30;
@@ -101,6 +100,54 @@ public class HttpJsonMethod {
                 .subscribe(subscriber);
     }
 
+    public void getWorkList(Subscriber<WorkspaceListBean> subscriber, String engineerId, String createBy, int pageNum, int pageSize) {
+        baseService.getWorkList(engineerId, createBy, pageNum, pageSize)
+                .subscribeOn(Schedulers.io())
+                .unsubscribeOn(Schedulers.io())
+                .observeOn(AndroidSchedulers.mainThread())
+                .subscribe(subscriber);
+    }
+
+    public void getCallList(Subscriber<CallBean> subscriber, int pageNum, int pageSize) {
+        baseService.getCallList(pageNum, pageSize)
+                .subscribeOn(Schedulers.io())
+                .unsubscribeOn(Schedulers.io())
+                .observeOn(AndroidSchedulers.mainThread())
+                .subscribe(subscriber);
+    }
+
+    public void createWorkspace(Subscriber<BaseBean> subscriber, WorkspaceAddBean workspaceAddBean) {
+        baseService.createWorkspace(workspaceAddBean)
+                .subscribeOn(Schedulers.io())
+                .unsubscribeOn(Schedulers.io())
+                .observeOn(AndroidSchedulers.mainThread())
+                .subscribe(subscriber);
+    }
+
+    public void dispatchWorkspace(Subscriber<BaseBean> subscriber, WorkspaceDispatchBean workspaceDispatchBean) {
+        baseService.dispatchWorkspace(workspaceDispatchBean)
+                .subscribeOn(Schedulers.io())
+                .unsubscribeOn(Schedulers.io())
+                .observeOn(AndroidSchedulers.mainThread())
+                .subscribe(subscriber);
+    }
+
+    public void updateWorkspace(Subscriber<BaseBean> subscriber, WorkspaceUpdateBean workspaceUpdateBean) {
+        baseService.updateWorkspace(workspaceUpdateBean)
+                .subscribeOn(Schedulers.io())
+                .unsubscribeOn(Schedulers.io())
+                .observeOn(AndroidSchedulers.mainThread())
+                .subscribe(subscriber);
+    }
+
+    public void getWorkspaceDetail(Subscriber<BaseBean> subscriber, String id) {
+        baseService.getWorkspaceDetail(id)
+                .subscribeOn(Schedulers.io())
+                .unsubscribeOn(Schedulers.io())
+                .observeOn(AndroidSchedulers.mainThread())
+                .subscribe(subscriber);
+    }
+
     public void getCodeDetail(Subscriber<CodeDetailBean> subscriber, String url) {
         baseService.getCodeDetail(url)
                 .subscribeOn(Schedulers.io())
@@ -111,6 +158,14 @@ public class HttpJsonMethod {
 
     public void getDeviceList(Subscriber<DeviceListBean> subscriber, String search) {
         baseService.getDeviceList(search)
+                .subscribeOn(Schedulers.io())
+                .unsubscribeOn(Schedulers.io())
+                .observeOn(AndroidSchedulers.mainThread())
+                .subscribe(subscriber);
+    }
+
+    public void getDeviceDetail(Subscriber<DeviceDetailBean> subscriber, String id) {
+        baseService.getDeviceDetail(id)
                 .subscribeOn(Schedulers.io())
                 .unsubscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())

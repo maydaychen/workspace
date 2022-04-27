@@ -36,29 +36,29 @@ import java.util.Map;
 public class TUICallVideoView extends BaseTUICallView {
     private static final String TAG = "TUICallVideoView";
 
-    private ImageView              mMuteImg;
-    private ImageView              mSwitchCameraImg;
-    private LinearLayout           mOpenCameraLl;
-    private ImageView              mOpenCameraImg;
-    private LinearLayout           mMuteLl;
-    private ImageView              mHangupImg;
-    private LinearLayout           mHangupLl;
-    private ImageView              mHandsfreeImg;
-    private LinearLayout           mHandsfreeLl;
-    private ImageView              mDialingImg;
-    private LinearLayout           mDialingLl;
-    private TextView               mTvHangup;
+    private ImageView mMuteImg;
+    private ImageView mSwitchCameraImg;
+//    private LinearLayout mOpenCameraLl;
+    private ImageView mOpenCameraImg;
+    private LinearLayout mMuteLl;
+    private ImageView mHangupImg;
+    private LinearLayout mHangupLl;
+    private ImageView mHandsfreeImg;
+    private LinearLayout mHandsfreeLl;
+    private ImageView mDialingImg;
+    private LinearLayout mDialingLl;
+    private TextView mTvHangup;
     private TRTCVideoLayoutManager mLayoutManagerTRTC;
-    private Group                  mInvitingGroup;
-    private LinearLayout           mImgContainerLl;
-    private TextView               mTimeTv;
-    private RoundCornerImageView   mSponsorAvatarImg;
-    private TextView               mSponsorUserNameTv;
-    private TextView               mSponsorUserVideoTag;
-    private View                   mViewSwitchAudioCall;
-    private View                   mShadeSponsor;
-    private TextView               mTextInviteWait;
-    private View                   mRootView;
+    private Group mInvitingGroup;
+    private LinearLayout mImgContainerLl;
+    private TextView mTimeTv;
+    private RoundCornerImageView mSponsorAvatarImg;
+    private TextView mSponsorUserNameTv;
+    private TextView mSponsorUserVideoTag;
+    private View mViewSwitchAudioCall;
+    private View mShadeSponsor;
+    private TextView mTextInviteWait;
+    private View mRootView;
 
     public TUICallVideoView(Context context, TUICalling.Role role, TUICalling.Type type, String[] userIDs,
                             String sponsorID, String groupID, boolean isFromGroup, VideoLayoutFactory factory) {
@@ -82,13 +82,13 @@ public class TUICallVideoView extends BaseTUICallView {
         mInvitingGroup = (Group) findViewById(R.id.group_inviting);
         mImgContainerLl = (LinearLayout) findViewById(R.id.ll_img_container);
         mTimeTv = (TextView) findViewById(R.id.tv_time);
-        mSponsorAvatarImg = (RoundCornerImageView) findViewById(R.id.iv_sponsor_avatar);
+//        mSponsorAvatarImg = (RoundCornerImageView) findViewById(R.id.iv_sponsor_avatar);
         mSponsorUserNameTv = (TextView) findViewById(R.id.tv_sponsor_user_name);
         mSwitchCameraImg = (ImageView) findViewById(R.id.switch_camera);
-        mOpenCameraLl = (LinearLayout) findViewById(R.id.ll_open_camera);
+//        mOpenCameraLl = (LinearLayout) findViewById(R.id.ll_open_camera);
         mOpenCameraImg = (ImageView) findViewById(R.id.img_camera);
         mSponsorUserVideoTag = (TextView) findViewById(R.id.tv_sponsor_video_tag);
-        mViewSwitchAudioCall = findViewById(R.id.ll_switch_audio_call);
+//        mViewSwitchAudioCall = findViewById(R.id.ll_switch_audio_call);
         mTvHangup = (TextView) findViewById(R.id.tv_hangup);
         mShadeSponsor = findViewById(R.id.shade_sponsor);
         setImageBackView(findViewById(R.id.img_video_back));
@@ -142,51 +142,42 @@ public class TUICallVideoView extends BaseTUICallView {
     }
 
     private void initListener() {
-        mMuteLl.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                mIsMuteMic = !mIsMuteMic;
-                mTRTCCalling.setMicMute(mIsMuteMic);
-                mMuteImg.setActivated(mIsMuteMic);
-                ToastUtils.showLong(mIsMuteMic ? R.string.trtccalling_toast_enable_mute : R.string.trtccalling_toast_disable_mute);
-            }
+        mMuteLl.setOnClickListener(v -> {
+            mIsMuteMic = !mIsMuteMic;
+            mTRTCCalling.setMicMute(mIsMuteMic);
+            mMuteImg.setActivated(mIsMuteMic);
+            ToastUtils.showLong(mIsMuteMic ? R.string.trtccalling_toast_enable_mute : R.string.trtccalling_toast_disable_mute);
         });
-        mSwitchCameraImg.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                if (!mIsCameraOpen) {
-                    ToastUtils.showShort(R.string.trtccalling_switch_camera_hint);
-                    return;
-                }
-                mIsFrontCamera = !mIsFrontCamera;
-                mTRTCCalling.switchCamera(mIsFrontCamera);
-                ToastUtils.showLong(R.string.trtccalling_toast_switch_camera);
+        mSwitchCameraImg.setOnClickListener(v -> {
+            if (!mIsCameraOpen) {
+                ToastUtils.showShort(R.string.trtccalling_switch_camera_hint);
+                return;
             }
+            mIsFrontCamera = !mIsFrontCamera;
+            mTRTCCalling.switchCamera(mIsFrontCamera);
+            ToastUtils.showLong(R.string.trtccalling_toast_switch_camera);
         });
 
-        mOpenCameraLl.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                TRTCVideoLayout videoLayout = mLayoutManagerTRTC.findCloudView(mSelfModel.userId);
-                if (videoLayout == null) {
-                    return;
-                }
-                if (mIsCameraOpen) {
-                    mTRTCCalling.closeCamera();
-                    videoLayout.setVideoAvailable(false);
-                    mIsCameraOpen = false;
-                    mOpenCameraImg.setActivated(true);
-                    mSwitchCameraImg.setVisibility(GONE);
-                } else {
-                    mTRTCCalling.openCamera(mIsFrontCamera, videoLayout.getVideoView());
-                    videoLayout.setVideoAvailable(true);
-                    mIsCameraOpen = true;
-                    mOpenCameraImg.setActivated(false);
-                    mSwitchCameraImg.setVisibility(VISIBLE);
-                }
-                ToastUtils.showLong(mIsCameraOpen ? R.string.trtccalling_toast_enable_camera : R.string.trtccalling_toast_disable_camera);
-            }
-        });
+//        mOpenCameraLl.setOnClickListener(v -> {
+//            TRTCVideoLayout videoLayout = mLayoutManagerTRTC.findCloudView(mSelfModel.userId);
+//            if (videoLayout == null) {
+//                return;
+//            }
+//            if (mIsCameraOpen) {
+//                mTRTCCalling.closeCamera();
+//                videoLayout.setVideoAvailable(false);
+//                mIsCameraOpen = false;
+//                mOpenCameraImg.setActivated(true);
+//                mSwitchCameraImg.setVisibility(GONE);
+//            } else {
+//                mTRTCCalling.openCamera(mIsFrontCamera, videoLayout.getVideoView());
+//                videoLayout.setVideoAvailable(true);
+//                mIsCameraOpen = true;
+//                mOpenCameraImg.setActivated(false);
+//                mSwitchCameraImg.setVisibility(VISIBLE);
+//            }
+//            ToastUtils.showLong(mIsCameraOpen ? R.string.trtccalling_toast_enable_camera : R.string.trtccalling_toast_disable_camera);
+//        });
         mHandsfreeLl.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -198,13 +189,10 @@ public class TUICallVideoView extends BaseTUICallView {
         });
         mMuteImg.setActivated(mIsMuteMic);
         mHandsfreeImg.setActivated(mIsHandsFree);
-        mViewSwitchAudioCall.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                mTRTCCalling.switchToAudioCall();
-                mIsCalledClick = true;
-            }
-        });
+//        mViewSwitchAudioCall.setOnClickListener(v -> {
+//            mTRTCCalling.switchToAudioCall();
+//            mIsCalledClick = true;
+//        });
     }
 
     @Override
@@ -348,8 +336,8 @@ public class TUICallVideoView extends BaseTUICallView {
                         if (isDestroyed()) {
                             return;
                         }
-                        ImageLoader.loadImage(mContext, mSponsorAvatarImg, mSponsorUserInfo.userAvatar, R.drawable.trtccalling_ic_avatar);
-                        mSponsorUserNameTv.setText(mSponsorUserInfo.userName);
+//                        ImageLoader.loadImage(mContext, mSponsorAvatarImg, mSponsorUserInfo.userAvatar, R.drawable.trtccalling_ic_avatar);
+                        mSponsorUserNameTv.setText(mSponsorUserInfo.userName.split("-")[0] + "售后视频来电");
                     }
                 });
             }
@@ -365,8 +353,8 @@ public class TUICallVideoView extends BaseTUICallView {
         mHandsfreeLl.setVisibility(View.GONE);
         mMuteLl.setVisibility(View.GONE);
         mSwitchCameraImg.setVisibility(View.GONE);
-        mOpenCameraLl.setVisibility(View.GONE);
-        mViewSwitchAudioCall.setVisibility(View.VISIBLE);
+//        mOpenCameraLl.setVisibility(View.GONE);
+//        mViewSwitchAudioCall.setVisibility(View.VISIBLE);
         //3. 设置对应的listener
         mHangupLl.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -392,12 +380,12 @@ public class TUICallVideoView extends BaseTUICallView {
         if (visible) {
             mSponsorUserVideoTag.setVisibility(View.VISIBLE);
             mSponsorUserNameTv.setVisibility(View.VISIBLE);
-            mSponsorAvatarImg.setVisibility(View.VISIBLE);
+//            mSponsorAvatarImg.setVisibility(View.VISIBLE);
             mShadeSponsor.setVisibility(View.VISIBLE);
         } else {
             mSponsorUserVideoTag.setVisibility(View.GONE);
             mSponsorUserNameTv.setVisibility(View.GONE);
-            mSponsorAvatarImg.setVisibility(View.GONE);
+//            mSponsorAvatarImg.setVisibility(View.GONE);
             mShadeSponsor.setVisibility(View.GONE);
         }
     }
@@ -428,8 +416,8 @@ public class TUICallVideoView extends BaseTUICallView {
         mHandsfreeLl.setVisibility(View.GONE);
         mMuteLl.setVisibility(View.GONE);
         mSwitchCameraImg.setVisibility(View.GONE);
-        mOpenCameraLl.setVisibility(View.GONE);
-        mViewSwitchAudioCall.setVisibility(View.VISIBLE);
+//        mOpenCameraLl.setVisibility(View.GONE);
+//        mViewSwitchAudioCall.setVisibility(View.VISIBLE);
         //3. 隐藏中间他们也在界面
         hideOtherInvitingUserView();
         //4. sponsor画面也隐藏
@@ -448,8 +436,8 @@ public class TUICallVideoView extends BaseTUICallView {
                         if (isDestroyed()) {
                             return;
                         }
-                        mSponsorUserNameTv.setText(invitee.userName);
-                        ImageLoader.loadImage(mContext, mSponsorAvatarImg, invitee.userAvatar, R.drawable.trtccalling_ic_avatar);
+                        mSponsorUserNameTv.setText(invitee.userName.split("-")[0] + "售后视频来电");
+//                        ImageLoader.loadImage(mContext, mSponsorAvatarImg, invitee.userAvatar, R.drawable.trtccalling_ic_avatar);
                     }
                 });
             }
@@ -476,8 +464,8 @@ public class TUICallVideoView extends BaseTUICallView {
         mMuteLl.setVisibility(View.VISIBLE);
         boolean isAudioMode = (TUICalling.Type.AUDIO == mCallType);
         mSwitchCameraImg.setVisibility(isAudioMode ? View.GONE : View.VISIBLE);
-        mOpenCameraLl.setVisibility(isAudioMode ? View.GONE : View.VISIBLE);
-        mViewSwitchAudioCall.setVisibility(isAudioMode ? View.GONE : View.VISIBLE);
+//        mOpenCameraLl.setVisibility(isAudioMode ? View.GONE : View.VISIBLE);
+//        mViewSwitchAudioCall.setVisibility(isAudioMode ? View.GONE : View.VISIBLE);
         mHangupLl.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -594,8 +582,8 @@ public class TUICallVideoView extends BaseTUICallView {
     private void updateAudioCallView() {
         updateAudioCallViewColor();
         visibleSponsorGroup(false);
-        mViewSwitchAudioCall.setVisibility(View.GONE);
-        mOpenCameraLl.setVisibility(View.GONE);
+//        mViewSwitchAudioCall.setVisibility(View.GONE);
+//        mOpenCameraLl.setVisibility(View.GONE);
         mSwitchCameraImg.setVisibility(View.GONE);
         ConstraintLayout.LayoutParams muteLayoutParams = new ConstraintLayout.LayoutParams(
                 ConstraintLayout.LayoutParams.WRAP_CONTENT, ConstraintLayout.LayoutParams.WRAP_CONTENT

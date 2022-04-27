@@ -7,13 +7,6 @@ import com.huanxin.workspace.data.UserBean;
 import com.huanxin.workspace.http.ProgressErrorSubscriber;
 import com.huanxin.workspace.requestBean.LoginBean;
 
-/**
- * @author : yi.chen
- * e-mail : yi.chen@nttdata.com
- * date   : 2020/1/10  17:33
- * desc   :
- * version: 1.0
- */
 public interface LoginContract {
 
     interface Model extends IBaseModel {
