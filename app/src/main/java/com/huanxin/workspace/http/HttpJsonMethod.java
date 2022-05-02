@@ -11,6 +11,7 @@ import com.huanxin.workspace.data.CodeDetailBean;
 import com.huanxin.workspace.data.DeviceDetailBean;
 import com.huanxin.workspace.data.DeviceListBean;
 import com.huanxin.workspace.data.UserBean;
+import com.huanxin.workspace.data.WorkspaceDetailBean;
 import com.huanxin.workspace.data.WorkspaceListBean;
 import com.huanxin.workspace.data.request.WorkspaceAddBean;
 import com.huanxin.workspace.data.request.WorkspaceDispatchBean;
@@ -140,7 +141,7 @@ public class HttpJsonMethod {
                 .subscribe(subscriber);
     }
 
-    public void getWorkspaceDetail(Subscriber<BaseBean> subscriber, String id) {
+    public void getWorkspaceDetail(Subscriber<WorkspaceDetailBean> subscriber, String id) {
         baseService.getWorkspaceDetail(id)
                 .subscribeOn(Schedulers.io())
                 .unsubscribeOn(Schedulers.io())

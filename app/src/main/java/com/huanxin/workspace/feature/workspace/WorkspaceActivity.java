@@ -1,7 +1,13 @@
 package com.huanxin.workspace.feature.workspace;
 
+import static com.huanxin.workspace.Consts.TOKEN;
+import static com.huanxin.workspace.util.pageUtils.getUserId;
+
 import android.content.Context;
+import android.content.Intent;
 import android.os.Bundle;
+import android.view.View;
+import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Spinner;
 
@@ -11,7 +17,8 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.huanxin.workspace.R;
 import com.huanxin.workspace.base.BaseMvpActivity;
 import com.huanxin.workspace.data.WorkspaceListBean;
-import com.huanxin.workspace.feature.workspace.create.WorkspaceCreateActivity;
+import com.huanxin.workspace.feature.workspace.detail.WorkspaceDetailActivity;
+import com.huanxin.workspace.util.SharedPreferencesUtils;
 import com.huanxin.workspace.widget.CustomTitleBar;
 
 import java.util.ArrayList;
@@ -22,8 +29,6 @@ import butterknife.BindView;
 public class WorkspaceActivity extends BaseMvpActivity<WorkPresenter> implements WorkContract.View {
     @BindView(R.id.ct_workspace)
     CustomTitleBar mCtWorkspace;
-    @BindView(R.id.sp_status)
-    Spinner mSpStatus;
     @BindView(R.id.sp_source)
     Spinner mSpSource;
     @BindView(R.id.rv_workspace)
@@ -32,6 +37,10 @@ public class WorkspaceActivity extends BaseMvpActivity<WorkPresenter> implements
     private List<WorkspaceListBean.DataBean.ItemsBean> workList = new ArrayList<>();
     private ArrayAdapter<String> arr_adapter;
     private int pageNum = 0;
+    private String engineerId = "";
+    private String createBy = "";
+    private String userid = "";
+
     private WorkspaceListAdapter workspaceListAdapter;
 
     @Override
@@ -46,24 +55,57 @@ public class WorkspaceActivity extends BaseMvpActivity<WorkPresenter> implements
         data_list.add("请选择来源");
         data_list.add("指派给我的");
         data_list.add("我创建的");
-        data_list.add("客户创建的");
-        data_list.add("全部");
+//        data_list.add("客户创建的");
+//        data_list.add("全部");
+        userid = getUserId((String) SharedPreferencesUtils.getParam(this, TOKEN, ""));
     }
 
     @Override
     public void initView() {
+        mSpSource.setSelection(0);
+        mSpSource.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
+//                switch (i) {
+//                    case 0:
+//                        engineerId = "";
+//                        createBy = "";
+//                        presenter.getWorkList();
+//                        break;
+//                    case 1:
+//                        engineerId = userid;
+//                        createBy = "";
+//                        presenter.getWorkList();
+//                        break;
+//                    case 2:
+//                        engineerId = "";
+//                        createBy = userid;
+//                        presenter.getWorkList();
+//                        break;
+//                }
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> adapterView) {
+
+            }
+        });
         //适配器
         arr_adapter = new ArrayAdapter<>(this, R.layout.layout_spinner_common, data_list);
         //设置样式
         arr_adapter.setDropDownViewResource(R.layout.layout_spinner_drop);
         //加载适配器
-        mSpStatus.setAdapter(arr_adapter);
         mSpSource.setAdapter(arr_adapter);
+
         mCtWorkspace.setLeftIconOnClickListener(view -> finish());
 
         mRvWorkspace.setLayoutManager(new LinearLayoutManager(this));
         workspaceListAdapter = new WorkspaceListAdapter(R.layout.item_main_work_list, workList);
-        workspaceListAdapter.setOnItemClickListener((adapter, view, position) -> goActivity(WorkspaceCreateActivity.class));
+        workspaceListAdapter.setOnItemClickListener((adapter, view, position) -> {
+            Intent intent = new Intent(this, WorkspaceDetailActivity.class);
+            intent.putExtra("id", workList.get(position).getId());
+            startActivity(intent);
+        });
         mRvWorkspace.setAdapter(workspaceListAdapter);
         presenter.getWorkList();
     }

@@ -7,8 +7,14 @@ import com.huanxin.workspace.http.ProgressErrorSubscriber;
 public class DetailModel implements DetailContract.Model {
 
     @Override
-    public void getDetail(String url, ProgressErrorSubscriber callback) {
-        HttpJsonMethod.getInstance().getCodeDetail(
-                callback, url);
+    public void getDetail(String id, ProgressErrorSubscriber callback) {
+        HttpJsonMethod.getInstance().getWorkspaceDetail(
+                callback, id);
+    }
+
+    @Override
+    public void getDeviceDetail(String id, ProgressErrorSubscriber callback) {
+        HttpJsonMethod.getInstance().getDeviceDetail(
+                callback, id);
     }
 }

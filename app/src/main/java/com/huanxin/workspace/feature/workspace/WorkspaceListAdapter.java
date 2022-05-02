@@ -20,6 +20,8 @@ public class WorkspaceListAdapter extends BaseQuickAdapter<WorkspaceListBean.Dat
     protected void convert(BaseViewHolder helper, WorkspaceListBean.DataBean.ItemsBean item) {
         helper.setText(R.id.tv_work_type, item.getTicketType())
                 .setText(R.id.tv_work_desc, item.getTicketContent())
+                .setText(R.id.tv_work_device_name, item.getDeviceName())
+                .setText(R.id.tv_main_work_sn, item.getDeviceSn())
                 .setText(R.id.tv_work_phone, item.getReporterPhone());
         if (item.getDeviceImage() != null) {
             Glide.with(mContext).load(item.getDeviceImage()).into((ImageView) helper.getView(R.id.iv_main_work));

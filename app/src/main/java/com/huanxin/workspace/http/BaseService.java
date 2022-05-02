@@ -8,6 +8,7 @@ import com.huanxin.workspace.data.CodeDetailBean;
 import com.huanxin.workspace.data.DeviceDetailBean;
 import com.huanxin.workspace.data.DeviceListBean;
 import com.huanxin.workspace.data.UserBean;
+import com.huanxin.workspace.data.WorkspaceDetailBean;
 import com.huanxin.workspace.data.WorkspaceListBean;
 import com.huanxin.workspace.data.request.WorkspaceAddBean;
 import com.huanxin.workspace.data.request.WorkspaceDispatchBean;
@@ -49,7 +50,7 @@ public interface BaseService {
     rx.Observable<BaseBean> updateWorkspace(@Body WorkspaceUpdateBean workspaceUpdateBean);
 
     @GET("qrcode/work-ticket/get/{id}")
-    rx.Observable<BaseBean> getWorkspaceDetail(@Path("id") String id);
+    rx.Observable<WorkspaceDetailBean> getWorkspaceDetail(@Path("id") String id);
 
     @GET("qrcode/qrcode/byUrl")
     rx.Observable<CodeDetailBean> getCodeDetail(@Query("url") String url);

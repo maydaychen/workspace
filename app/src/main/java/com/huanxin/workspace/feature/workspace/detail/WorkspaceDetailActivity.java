@@ -5,12 +5,13 @@ import android.os.Bundle;
 
 import com.huanxin.workspace.R;
 import com.huanxin.workspace.base.BaseMvpActivity;
-import com.huanxin.workspace.data.CodeDetailBean;
+import com.huanxin.workspace.data.DeviceDetailBean;
+import com.huanxin.workspace.data.WorkspaceDetailBean;
 import com.huanxin.workspace.widget.CustomTitleBar;
 import com.huanxin.workspace.widget.PointProcessBar;
 import com.huanxin.workspace.widget.workspace.DeviceInfo;
-import com.huanxin.workspace.widget.workspace.PeopleInfo;
 import com.huanxin.workspace.widget.workspace.HandleResult;
+import com.huanxin.workspace.widget.workspace.PeopleInfo;
 import com.huanxin.workspace.widget.workspace.WorksheetInfo;
 
 import java.util.ArrayList;
@@ -33,6 +34,7 @@ public class WorkspaceDetailActivity extends BaseMvpActivity<DetailPresenter> im
     HandleResult mHrWorkspace;
     @BindView(R.id.wi_workspace_detail)
     WorksheetInfo mWiWorkspace;
+    private String deviceId = "";
 
     @Override
     protected int getLayoutId() {
@@ -74,7 +76,22 @@ public class WorkspaceDetailActivity extends BaseMvpActivity<DetailPresenter> im
     }
 
     @Override
-    public void getDetailSuccess(CodeDetailBean.DataBean userBean) {
+    public String getDeviceId() {
+        return deviceId;
+    }
 
+    @Override
+    public void getDetailSuccess(WorkspaceDetailBean.DataBean dataBean) {
+        deviceId = dataBean.getDeviceId();
+        presenter.getDeviceDetail();
+    }
+
+    @Override
+    public void getDeviceDetailSuccess(DeviceDetailBean.DataBean dataBean) {
+        mDfWorkspace.setAddress(dataBean.getDeliveryAddress());
+        mDfWorkspace.setLogo(dataBean.getBatteryImage());
+        mDfWorkspace.setSubTitle(dataBean.getSn());
+        mDfWorkspace.setName(String.format(getContext().getString(R.string.deveice_name), getIntent().getStringExtra("deviceName")));
+        mDfWorkspace.setOwner(String.format(getContext().getString(R.string.deveice_owner), dataBean.getCustomerName()));
     }
 }

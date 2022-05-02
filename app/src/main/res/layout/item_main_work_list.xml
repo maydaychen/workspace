@@ -25,7 +25,7 @@
                 android:layout_marginVertical="@dimen/margin_size_14dp" />
 
             <TextView
-                android:id="@+id/tv_main_work_name"
+                android:id="@+id/tv_main_work_sn"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_alignTop="@id/iv_main_work"
@@ -35,13 +35,14 @@
                 android:textSize="@dimen/font_size_18sp" />
 
             <TextView
+                android:id="@+id/tv_work_device_name"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_below="@id/tv_main_work_sn"
                 android:layout_toEndOf="@id/iv_main_work"
-                android:layout_below="@id/tv_main_work_name"
-                android:textSize="@dimen/font_size_16sp"
                 android:text="户外超高压清洗机"
-                android:textColor="@color/font33" />
+                android:textColor="@color/font33"
+                android:textSize="@dimen/font_size_16sp" />
 
             <TextView
                 android:layout_width="wrap_content"
