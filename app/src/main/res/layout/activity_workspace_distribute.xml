@@ -4,7 +4,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".feature.workspace.create.WorkspaceCreateActivity">
+    android:orientation="vertical"
+    tools:context=".feature.workspace.detail.WorkspaceDetailActivity">
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -15,7 +16,7 @@
             android:id="@+id/ct_workspace"
             android:layout_width="match_parent"
             android:layout_height="40dp"
-            app:title="处理结果" />
+            app:title="工单分配" />
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -23,7 +24,8 @@
             android:layout_marginTop="@dimen/margin_size_10dp"
             android:background="@color/white"
             android:orientation="vertical"
-            android:paddingHorizontal="@dimen/margin_size_16dp">
+            android:paddingHorizontal="@dimen/margin_size_16dp"
+            android:paddingTop="@dimen/margin_size_10dp">
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -33,7 +35,7 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="是否处理"
+                    android:text="负责工程师"
                     android:textColor="#2D3033" />
 
                 <TextView
@@ -50,7 +52,7 @@
                 android:gravity="center_vertical">
 
                 <Spinner
-                    android:id="@+id/sp_work_finished"
+                    android:id="@+id/sp_work_engineer"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content" />
             </LinearLayout>
@@ -59,62 +61,22 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="@dimen/margin_size_20dp"
-                android:text="备注"
+                android:text="建议处理方式"
                 android:textColor="#2D3033" />
 
             <EditText
-                android:id="@+id/et_work_remark"
+                android:id="@+id/et_workspace_solution"
                 style="@style/NormalEditText"
                 android:layout_width="match_parent"
                 android:layout_height="80dp"
                 android:gravity="top"
-                android:hint="请输入您认为需要记录的内容"
+                android:hint="请输入您认为合适的处理方式"
                 android:padding="@dimen/margin_size_16dp"
                 android:singleLine="false"
                 android:textSize="@dimen/font_size_16sp" />
 
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="@dimen/margin_size_20dp">
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="上传图片"
-                    android:textColor="#2D3033" />
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginStart="@dimen/margin_size_6dp"
-                    android:text="*最多九张，大小不超过5M"
-                    android:textColor="#A2A2A2"
-                    android:textSize="@dimen/font_size_12sp" />
-            </LinearLayout>
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="@dimen/margin_size_20dp">
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="上传视频"
-                    android:textColor="#2D3033" />
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginStart="@dimen/margin_size_6dp"
-                    android:text="*最多一个，大小不超过200M"
-                    android:textColor="#A2A2A2"
-                    android:textSize="@dimen/font_size_12sp" />
-            </LinearLayout>
-
             <TextView
-                android:id="@+id/tv_work_update"
+                android:id="@+id/tv_workspace_distribute"
                 style="@style/MiddleButton"
                 android:layout_marginHorizontal="0dp"
                 android:layout_marginVertical="20dp"
@@ -150,25 +112,21 @@
                 android:layout_height="60dp"
                 android:layout_marginHorizontal="@dimen/margin_size_16dp"
                 android:layout_marginTop="@dimen/margin_size_10dp" />
-
         </LinearLayout>
 
-        <com.huanxin.workspace.widget.workspace.DeviceInfo
-            android:id="@+id/df_workspace_update"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="@dimen/margin_size_10dp" />
 
-        <com.huanxin.workspace.widget.workspace.PeopleInfo
-            android:id="@+id/ei_workspace_update"
+        <com.huanxin.workspace.widget.workspace.DeviceInfo
+            android:id="@+id/df_workspace_distribute"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="@dimen/margin_size_10dp" />
 
         <com.huanxin.workspace.widget.workspace.WorksheetInfo
-            android:id="@+id/wi_workspace_update"
+            android:id="@+id/wi_workspace_distribute"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="@dimen/margin_size_10dp" />
     </LinearLayout>
+
+
 </androidx.core.widget.NestedScrollView>

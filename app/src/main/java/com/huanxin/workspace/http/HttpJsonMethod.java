@@ -10,11 +10,13 @@ import com.huanxin.workspace.data.CodeBean;
 import com.huanxin.workspace.data.CodeDetailBean;
 import com.huanxin.workspace.data.DeviceDetailBean;
 import com.huanxin.workspace.data.DeviceListBean;
+import com.huanxin.workspace.data.EngineerListBean;
 import com.huanxin.workspace.data.UserBean;
 import com.huanxin.workspace.data.WorkspaceDetailBean;
 import com.huanxin.workspace.data.WorkspaceListBean;
+import com.huanxin.workspace.data.request.EngineerDistributeBean;
 import com.huanxin.workspace.data.request.WorkspaceAddBean;
-import com.huanxin.workspace.data.request.WorkspaceDispatchBean;
+import com.huanxin.workspace.data.request.WorkspaceCloseBean;
 import com.huanxin.workspace.data.request.WorkspaceUpdateBean;
 import com.huanxin.workspace.requestBean.BindReuest;
 import com.huanxin.workspace.requestBean.LoginBean;
@@ -125,8 +127,8 @@ public class HttpJsonMethod {
                 .subscribe(subscriber);
     }
 
-    public void dispatchWorkspace(Subscriber<BaseBean> subscriber, WorkspaceDispatchBean workspaceDispatchBean) {
-        baseService.dispatchWorkspace(workspaceDispatchBean)
+    public void dispatchWorkspace(Subscriber<BaseBean> subscriber, EngineerDistributeBean engineerDistributeBean) {
+        baseService.dispatchWorkspace(engineerDistributeBean)
                 .subscribeOn(Schedulers.io())
                 .unsubscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
@@ -135,6 +137,14 @@ public class HttpJsonMethod {
 
     public void updateWorkspace(Subscriber<BaseBean> subscriber, WorkspaceUpdateBean workspaceUpdateBean) {
         baseService.updateWorkspace(workspaceUpdateBean)
+                .subscribeOn(Schedulers.io())
+                .unsubscribeOn(Schedulers.io())
+                .observeOn(AndroidSchedulers.mainThread())
+                .subscribe(subscriber);
+    }
+
+    public void closeWorkspace(Subscriber<BaseBean> subscriber, WorkspaceCloseBean workspaceCloseBean) {
+        baseService.closeWorkspace(workspaceCloseBean)
                 .subscribeOn(Schedulers.io())
                 .unsubscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
@@ -151,6 +161,14 @@ public class HttpJsonMethod {
 
     public void getCodeDetail(Subscriber<CodeDetailBean> subscriber, String url) {
         baseService.getCodeDetail(url)
+                .subscribeOn(Schedulers.io())
+                .unsubscribeOn(Schedulers.io())
+                .observeOn(AndroidSchedulers.mainThread())
+                .subscribe(subscriber);
+    }
+
+    public void getEngineerList(Subscriber<EngineerListBean> subscriber) {
+        baseService.getEngineerList("engineer")
                 .subscribeOn(Schedulers.io())
                 .unsubscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())

@@ -7,11 +7,13 @@ import com.huanxin.workspace.data.CodeBean;
 import com.huanxin.workspace.data.CodeDetailBean;
 import com.huanxin.workspace.data.DeviceDetailBean;
 import com.huanxin.workspace.data.DeviceListBean;
+import com.huanxin.workspace.data.EngineerListBean;
 import com.huanxin.workspace.data.UserBean;
 import com.huanxin.workspace.data.WorkspaceDetailBean;
 import com.huanxin.workspace.data.WorkspaceListBean;
+import com.huanxin.workspace.data.request.EngineerDistributeBean;
 import com.huanxin.workspace.data.request.WorkspaceAddBean;
-import com.huanxin.workspace.data.request.WorkspaceDispatchBean;
+import com.huanxin.workspace.data.request.WorkspaceCloseBean;
 import com.huanxin.workspace.data.request.WorkspaceUpdateBean;
 import com.huanxin.workspace.requestBean.BindReuest;
 import com.huanxin.workspace.requestBean.LoginBean;
@@ -44,16 +46,22 @@ public interface BaseService {
     rx.Observable<BaseBean> createWorkspace(@Body WorkspaceAddBean workspaceAddBean);
 
     @POST("qrcode/work-ticket/dispatch")
-    rx.Observable<BaseBean> dispatchWorkspace(@Body WorkspaceDispatchBean workspaceDispatchBean);
+    rx.Observable<BaseBean> dispatchWorkspace(@Body EngineerDistributeBean engineerDistributeBean);
 
     @POST("qrcode/work-ticket/update")
     rx.Observable<BaseBean> updateWorkspace(@Body WorkspaceUpdateBean workspaceUpdateBean);
+
+    @POST("qrcode/work-ticket/close")
+    rx.Observable<BaseBean> closeWorkspace(@Body WorkspaceCloseBean workspaceUpdateBean);
 
     @GET("qrcode/work-ticket/get/{id}")
     rx.Observable<WorkspaceDetailBean> getWorkspaceDetail(@Path("id") String id);
 
     @GET("qrcode/qrcode/byUrl")
     rx.Observable<CodeDetailBean> getCodeDetail(@Query("url") String url);
+
+    @GET("system/user/listByRoleCode")
+    rx.Observable<EngineerListBean> getEngineerList(@Query("roleCode") String roleCode);
 
     @GET("qrcode/device/getUnbindDevice")
     rx.Observable<DeviceListBean> getDeviceList(@Query("search") String search);

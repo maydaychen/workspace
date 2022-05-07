@@ -3,7 +3,9 @@ package com.huanxin.workspace.feature.workspace.update;
 import com.huanxin.workspace.base.IBaseModel;
 import com.huanxin.workspace.base.IBaseView;
 import com.huanxin.workspace.data.BaseBean;
-import com.huanxin.workspace.data.request.WorkspaceUpdateBean;
+import com.huanxin.workspace.data.DeviceDetailBean;
+import com.huanxin.workspace.data.WorkspaceDetailBean;
+import com.huanxin.workspace.data.request.WorkspaceCloseBean;
 import com.huanxin.workspace.http.ProgressErrorSubscriber;
 
 
@@ -11,28 +13,36 @@ public interface WorkUpdateContract {
 
     interface Model extends IBaseModel {
 
-        void updateWorkspace(WorkspaceUpdateBean workspaceAddBean, ProgressErrorSubscriber callback);
+        void closeWorkspace(WorkspaceCloseBean workspaceAddBean, ProgressErrorSubscriber callback);
 
         void getDetail(String id, ProgressErrorSubscriber callback);
+
+        void getDeviceDetail(String id, ProgressErrorSubscriber callback);
+
 
     }
 
     interface View extends IBaseView {
         String getId();
 
-        void updateWorkListSuccess(BaseBean userBean);
+        String getDeviceId();
 
-        void getDetailSuccess(WorkspaceUpdateBean userBean);
+        WorkspaceCloseBean getBean();
+
+        void closeWorkSuccess(BaseBean userBean);
+
+        void getDetailSuccess(WorkspaceDetailBean.DataBean userBean);
+
+        void getDeviceDetailSuccess(DeviceDetailBean.DataBean userBean);
 
 
     }
 
     interface Presenter {
 
-        /**
-         * 获取工单列表
-         */
-        void updateWorkspace();
+        void closeWorkspace();
+
+        void getDeviceDetail();
 
         void getDetail();
 

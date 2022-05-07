@@ -30,6 +30,7 @@
         <entry key="app/src/main/res/layout/activity_workspace.xml" value="0.29243266353142366" />
         <entry key="app/src/main/res/layout/activity_workspace_create.xml" value="0.35004119873046885" />
         <entry key="app/src/main/res/layout/activity_workspace_detail.xml" value="0.29116058349609375" />
+        <entry key="app/src/main/res/layout/activity_workspace_distribute.xml" value="0.2724388032638259" />
         <entry key="app/src/main/res/layout/activity_workspace_update.xml" value="0.29243266353142366" />
         <entry key="app/src/main/res/layout/app_show_tip_dialog_confirm.xml" value="0.29243266353142366" />
         <entry key="app/src/main/res/layout/empty_view.xml" value="0.29243266353142366" />
@@ -47,8 +48,9 @@
         <entry key="app/src/main/res/layout/layout_handle_result.xml" value="0.29243266353142366" />
         <entry key="app/src/main/res/layout/layout_spinner_common.xml" value="0.1" />
         <entry key="app/src/main/res/layout/layout_spinner_drop.xml" value="0.1" />
+        <entry key="app/src/main/res/layout/layout_spinner_left.xml" value="0.2724388032638259" />
         <entry key="app/src/main/res/layout/layout_titlebar.xml" value="0.26168670654296877" />
-        <entry key="app/src/main/res/layout/layout_worksheet_info.xml" value="0.1" />
+        <entry key="app/src/main/res/layout/layout_worksheet_info.xml" value="0.335" />
         <entry key="app/src/main/res/layout/layout_workspace_process.xml" value="0.29243266353142366" />
         <entry key="app/src/main/res/layout/videocall_popup_layout.xml" value="0.29243266353142366" />
         <entry key="app/src/main/res/layout/videocall_view_floating_default.xml" value="0.29243266353142366" />

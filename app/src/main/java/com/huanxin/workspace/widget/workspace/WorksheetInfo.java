@@ -18,7 +18,7 @@ import java.util.List;
 
 public class WorksheetInfo extends LinearLayout {
     private TextView tvTitle;
-    private TextView tvCreator;
+    private TextView tvStatus;
     private TextView tvName;
     private TextView tvTime;
     private TextView tvType;
@@ -37,7 +37,7 @@ public class WorksheetInfo extends LinearLayout {
     private void initView(final Context context, AttributeSet attributeSet) {
         View inflate = LayoutInflater.from(context).inflate(R.layout.layout_worksheet_info, this);
         tvTitle = inflate.findViewById(R.id.tv_worksheet_title);
-        tvCreator = inflate.findViewById(R.id.tv_worksheet_creator);
+        tvStatus = inflate.findViewById(R.id.tv_worksheet_status);
         tvName = inflate.findViewById(R.id.tv_worksheet_client);
         tvTime = inflate.findViewById(R.id.tv_worksheet_time);
         tvType = inflate.findViewById(R.id.tv_worksheet_type);
@@ -52,8 +52,8 @@ public class WorksheetInfo extends LinearLayout {
         tvTitle.setText(title);
     }
 
-    public void setCreator(String creator) {
-        tvCreator.setText(creator);
+    public void setStatus(String status) {
+        tvStatus.setText(status);
     }
 
     public void setName(String name) {

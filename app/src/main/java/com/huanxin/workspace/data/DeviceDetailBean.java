@@ -55,6 +55,7 @@ public class DeviceDetailBean {
          * productId
          */
         private String productId;
+        private String deviceName;
         /**
          * latitude
          */
@@ -203,6 +204,14 @@ public class DeviceDetailBean {
 
         public void setCustomerName(String customerName) {
             this.customerName = customerName;
+        }
+
+        public String getDeviceName() {
+            return deviceName;
+        }
+
+        public void setDeviceName(String deviceName) {
+            this.deviceName = deviceName;
         }
     }
 }

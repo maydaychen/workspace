@@ -7,6 +7,11 @@ import com.huanxin.workspace.http.ProgressErrorSubscriber;
 
 public class WorkCreateModel implements WorkCreateContract.Model {
     @Override
+    public void getEngineerList(ProgressErrorSubscriber callback) {
+        HttpJsonMethod.getInstance().getEngineerList(callback);
+    }
+
+    @Override
     public void createWorkspace(WorkspaceAddBean workspaceAddBean, ProgressErrorSubscriber callback) {
         HttpJsonMethod.getInstance().createWorkspace(callback, workspaceAddBean);
     }

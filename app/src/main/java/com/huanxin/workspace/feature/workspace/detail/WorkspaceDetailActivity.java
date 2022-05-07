@@ -1,7 +1,10 @@
 package com.huanxin.workspace.feature.workspace.detail;
 
+import static com.huanxin.workspace.util.DateUtils.timestampToDate;
+
 import android.content.Context;
 import android.os.Bundle;
+import android.view.View;
 
 import com.huanxin.workspace.R;
 import com.huanxin.workspace.base.BaseMvpActivity;
@@ -35,6 +38,7 @@ public class WorkspaceDetailActivity extends BaseMvpActivity<DetailPresenter> im
     @BindView(R.id.wi_workspace_detail)
     WorksheetInfo mWiWorkspace;
     private String deviceId = "";
+    List<String> titleList = new ArrayList<>();
 
     @Override
     protected int getLayoutId() {
@@ -43,20 +47,14 @@ public class WorkspaceDetailActivity extends BaseMvpActivity<DetailPresenter> im
 
     @Override
     public void initData(Bundle savedInstanceState) {
-
+        titleList.add("用户报修");
+        titleList.add("安排工程师");
+        titleList.add("维修完成");
     }
 
     @Override
     public void initView() {
         mCtWorkspace.setLeftIconOnClickListener(view -> finish());
-        List<String> titleList = new ArrayList<>();
-        Set<Integer> selectList = new HashSet<>();
-        titleList.add("用户报修");
-        titleList.add("安排工程师");
-        titleList.add("维修完成");
-        selectList.add(0);
-        selectList.add(1);
-        mPbWorkspace.show(titleList, selectList);
         presenter.getDetail();
     }
 
@@ -83,15 +81,43 @@ public class WorkspaceDetailActivity extends BaseMvpActivity<DetailPresenter> im
     @Override
     public void getDetailSuccess(WorkspaceDetailBean.DataBean dataBean) {
         deviceId = dataBean.getDeviceId();
+        mDfWorkspace.setName(String.format(getContext().getString(R.string.deveice_name), dataBean.getDeviceName()));
+        mDfWorkspace.setOwner(String.format(getContext().getString(R.string.deveice_owner), dataBean.getDeviceCustomer()));
+        mDfWorkspace.setLogo(dataBean.getDeviceImage());
+        mWiWorkspace.setName(dataBean.getReporterPhone());
+        mWiWorkspace.setDesc(dataBean.getTicketContent());
+        mWiWorkspace.setTime(timestampToDate(dataBean.getCreateTime()));
+        mEiWorkspace.setTvName(dataBean.getEngineerName());
+        mEiWorkspace.setTvTelephont(dataBean.getEngineerPhone());
+        mHrWorkspace.setRemark(dataBean.getTicketContent());
+        mHrWorkspace.setResult(dataBean.getTicketResultState() == null ? "" : dataBean.getTicketResultState() == 0 ? "未处理" : "已处理");
+        Set<Integer> selectList = new HashSet<>();
+        switch (dataBean.getTicketState()) {
+            case 1:
+                mWiWorkspace.setStatus("待派工");
+                selectList.add(0);
+                break;
+            case 2:
+                mWiWorkspace.setStatus("处理中");
+                selectList.add(0);
+                selectList.add(1);
+                mEiWorkspace.setVisibility(View.VISIBLE);
+                break;
+            case 3:
+                mWiWorkspace.setStatus("已完成");
+                selectList.add(0);
+                selectList.add(1);
+                selectList.add(2);
+                mHrWorkspace.setVisibility(View.VISIBLE);
+                break;
+        }
+        mPbWorkspace.show(titleList, selectList);
         presenter.getDeviceDetail();
     }
 
     @Override
     public void getDeviceDetailSuccess(DeviceDetailBean.DataBean dataBean) {
         mDfWorkspace.setAddress(dataBean.getDeliveryAddress());
-        mDfWorkspace.setLogo(dataBean.getBatteryImage());
         mDfWorkspace.setSubTitle(dataBean.getSn());
-        mDfWorkspace.setName(String.format(getContext().getString(R.string.deveice_name), getIntent().getStringExtra("deviceName")));
-        mDfWorkspace.setOwner(String.format(getContext().getString(R.string.deveice_owner), dataBean.getCustomerName()));
     }
 }

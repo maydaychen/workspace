@@ -4,13 +4,17 @@ import com.huanxin.workspace.base.IBaseModel;
 import com.huanxin.workspace.base.IBaseView;
 import com.huanxin.workspace.data.BaseBean;
 import com.huanxin.workspace.data.DeviceDetailBean;
+import com.huanxin.workspace.data.EngineerListBean;
 import com.huanxin.workspace.data.request.WorkspaceAddBean;
 import com.huanxin.workspace.http.ProgressErrorSubscriber;
+
+import java.util.List;
 
 
 public interface WorkCreateContract {
 
     interface Model extends IBaseModel {
+        void getEngineerList(ProgressErrorSubscriber callback);
 
         void createWorkspace(WorkspaceAddBean workspaceAddBean, ProgressErrorSubscriber callback);
 
@@ -29,15 +33,14 @@ public interface WorkCreateContract {
 
         void getDeviceDetailSuccess(DeviceDetailBean.DataBean userBean);
 
-
+        void getEngineerListSuccess(List<EngineerListBean.DataBean> beanList);
     }
 
     interface Presenter {
         void getDeviceDetail();
 
-        /**
-         * 获取工单列表
-         */
+        void getEngineerList();
+
         void createWorkspace();
     }
 }

@@ -69,7 +69,7 @@ public class WorkspaceAddBean {
     /**
      * engineerId
      */
-    private Integer engineerId;
+    private String engineerId;
     /**
      * engineerName
      */
@@ -219,11 +219,11 @@ public class WorkspaceAddBean {
         this.reporterPhone = reporterPhone;
     }
 
-    public Integer getEngineerId() {
+    public String getEngineerId() {
         return engineerId;
     }
 
-    public void setEngineerId(Integer engineerId) {
+    public void setEngineerId(String engineerId) {
         this.engineerId = engineerId;
     }
 

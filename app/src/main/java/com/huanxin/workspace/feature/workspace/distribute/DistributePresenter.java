@@ -1,4 +1,4 @@
-package com.huanxin.workspace.feature.workspace.create;
+package com.huanxin.workspace.feature.workspace.distribute;
 
 import static com.huanxin.workspace.Consts.HTTP_SUCCESS;
 
@@ -6,22 +6,22 @@ import com.huanxin.workspace.base.BasePresenter;
 import com.huanxin.workspace.data.BaseBean;
 import com.huanxin.workspace.data.DeviceDetailBean;
 import com.huanxin.workspace.data.EngineerListBean;
+import com.huanxin.workspace.data.WorkspaceDetailBean;
 import com.huanxin.workspace.http.ProgressErrorSubscriber;
 
 
-public class WorkCreatePresenter extends BasePresenter<WorkCreateContract.Model, WorkCreateContract.View>
-        implements WorkCreateContract.Presenter {
+public class DistributePresenter extends BasePresenter<DistributeContract.Model, DistributeContract.View>
+        implements DistributeContract.Presenter {
 
     @Override
-    protected WorkCreateModel createModule() {
-        return new WorkCreateModel();
+    protected DistributeModel createModule() {
+        return new DistributeModel();
     }
 
     @Override
     public void start() {
 
     }
-
 
     @Override
     public void getDeviceDetail() {
@@ -46,7 +46,29 @@ public class WorkCreatePresenter extends BasePresenter<WorkCreateContract.Model,
                             dispatchException(e);
                         }
                     });
-//            }
+        }
+    }
+
+    @Override
+    public void getDetail() {
+        if (isViewAttached()) {
+            getView().showLoading();
+            getModule().getDetail(
+                    getView().getId(), new ProgressErrorSubscriber<WorkspaceDetailBean>() {
+                        @Override
+                        public void onNext(WorkspaceDetailBean workspaceDetailBean) {
+                            getView().dismissLoading();
+                            if (workspaceDetailBean.getCode() == HTTP_SUCCESS) {
+                                getView().getDetailSuccess(workspaceDetailBean.getData());
+                            }
+                        }
+
+                        @Override
+                        public void onError(Throwable e) {
+                            getView().dismissLoading();
+                            dispatchException(e);
+                        }
+                    });
         }
     }
 
@@ -70,19 +92,16 @@ public class WorkCreatePresenter extends BasePresenter<WorkCreateContract.Model,
     }
 
     @Override
-    public void createWorkspace() {
+    public void distributeEngineer() {
         if (isViewAttached()) {
             getView().showLoading();
-            getModule().createWorkspace(
-                    getView().getBean(),
-                    new ProgressErrorSubscriber<BaseBean>() {
+            getModule().distributeEngineer(
+                    getView().getBean(), new ProgressErrorSubscriber<BaseBean>() {
                         @Override
                         public void onNext(BaseBean baseBean) {
                             getView().dismissLoading();
                             if (baseBean.getCode() == HTTP_SUCCESS) {
-                                getView().createWorkListSuccess(baseBean);
-                            } else {
-                                getView().showError("获取失败");
+                                getView().distributeEngineerSuccess(baseBean);
                             }
                         }
 
@@ -92,7 +111,6 @@ public class WorkCreatePresenter extends BasePresenter<WorkCreateContract.Model,
                             dispatchException(e);
                         }
                     });
-//            }
         }
     }
 }

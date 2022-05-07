@@ -44,6 +44,12 @@
         tools:ignore="GoogleAppIndexingWarning"
         tools:replace="android:allowBackup">
         <activity
+            android:name=".feature.workspace.distribute.WorkspaceDistributeActivity"
+            android:exported="false" />
+        <activity
+            android:name=".feature.workspace.update.WorkspaceUpdateActivity"
+            android:exported="false" />
+        <activity
             android:name=".feature.call.CallActivity"
             android:exported="false" />
         <activity

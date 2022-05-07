@@ -52,6 +52,22 @@ public class WorkspaceDetailBean {
          */
         private String deviceSn;
         /**
+         * deviceName
+         */
+        private String deviceName;
+        /**
+         * deviceImage
+         */
+        private String deviceImage;
+        /**
+         * deviceCustomerId
+         */
+        private String deviceCustomerId;
+        /**
+         * deviceCustomer
+         */
+        private String deviceCustomer;
+        /**
          * ticketType
          */
         private String ticketType;
@@ -80,6 +96,18 @@ public class WorkspaceDetailBean {
          */
         private String reporterPhone;
         /**
+         * engineerId
+         */
+        private String engineerId;
+        /**
+         * engineerName
+         */
+        private String engineerName;
+        /**
+         * engineerPhone
+         */
+        private String engineerPhone;
+        /**
          * source
          */
         private Integer source;
@@ -88,9 +116,17 @@ public class WorkspaceDetailBean {
          */
         private String createBy;
         /**
+         * updateBy
+         */
+        private String updateBy;
+        /**
          * createTime
          */
         private Long createTime;
+        /**
+         * updateTime
+         */
+        private Long updateTime;
         /**
          * delFlag
          */
@@ -118,6 +154,38 @@ public class WorkspaceDetailBean {
 
         public void setDeviceSn(String deviceSn) {
             this.deviceSn = deviceSn;
+        }
+
+        public String getDeviceName() {
+            return deviceName;
+        }
+
+        public void setDeviceName(String deviceName) {
+            this.deviceName = deviceName;
+        }
+
+        public String getDeviceImage() {
+            return deviceImage;
+        }
+
+        public void setDeviceImage(String deviceImage) {
+            this.deviceImage = deviceImage;
+        }
+
+        public String getDeviceCustomerId() {
+            return deviceCustomerId;
+        }
+
+        public void setDeviceCustomerId(String deviceCustomerId) {
+            this.deviceCustomerId = deviceCustomerId;
+        }
+
+        public String getDeviceCustomer() {
+            return deviceCustomer;
+        }
+
+        public void setDeviceCustomer(String deviceCustomer) {
+            this.deviceCustomer = deviceCustomer;
         }
 
         public String getTicketType() {
@@ -176,6 +244,30 @@ public class WorkspaceDetailBean {
             this.reporterPhone = reporterPhone;
         }
 
+        public String getEngineerId() {
+            return engineerId;
+        }
+
+        public void setEngineerId(String engineerId) {
+            this.engineerId = engineerId;
+        }
+
+        public String getEngineerName() {
+            return engineerName;
+        }
+
+        public void setEngineerName(String engineerName) {
+            this.engineerName = engineerName;
+        }
+
+        public String getEngineerPhone() {
+            return engineerPhone;
+        }
+
+        public void setEngineerPhone(String engineerPhone) {
+            this.engineerPhone = engineerPhone;
+        }
+
         public Integer getSource() {
             return source;
         }
@@ -192,12 +284,28 @@ public class WorkspaceDetailBean {
             this.createBy = createBy;
         }
 
+        public String getUpdateBy() {
+            return updateBy;
+        }
+
+        public void setUpdateBy(String updateBy) {
+            this.updateBy = updateBy;
+        }
+
         public Long getCreateTime() {
             return createTime;
         }
 
         public void setCreateTime(Long createTime) {
             this.createTime = createTime;
+        }
+
+        public Long getUpdateTime() {
+            return updateTime;
+        }
+
+        public void setUpdateTime(Long updateTime) {
+            this.updateTime = updateTime;
         }
 
         public Boolean getDelFlag() {
